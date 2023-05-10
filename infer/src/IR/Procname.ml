@@ -457,6 +457,22 @@ module ObjC_Cpp = struct
   end)
 end
 
+module Swift = struct
+  type kind =
+    | Non_Static
+    | Static
+  [@@deriving compare, equal, yojson_of, sexp, hash]
+
+  type t =
+    { method_name: string
+    ; parameters: Typ.t list
+    ; class_name: Typ.Name.t
+    ; return_type: Typ.t option
+    ; kind: kind }
+    [@@deriving compare, equal, yojson_of, sexp, hash]
+
+end
+
 module C = struct
   (** Type of c procedure names. *)
   type t =

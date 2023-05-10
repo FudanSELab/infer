@@ -92,6 +92,7 @@ and name =
           "MyClass<int>", "InnerClass" *)
   | CppClass of {name: QualifiedCppName.t; template_spec_info: template_spec_info; is_union: bool}
   | CSharpClass of CSharpClassName.t
+  | SwiftClass of SwiftClassName.t
   | ErlangType of ErlangTypeName.t
   | HackClass of HackClassName.t
   | JavaClass of JavaClassName.t
@@ -352,6 +353,8 @@ val is_csharp_type : t -> bool
 
 val is_java_type : t -> bool
 (** is [t] a type produced by the Java frontend? *)
+
+val is_swift_type : t -> bool
 
 val unsome : string -> t option -> t
 
