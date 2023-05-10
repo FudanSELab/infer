@@ -47,6 +47,9 @@ type ptr_kind =
   | Pk_objc_weak  (** Obj-C __weak pointer *)
   | Pk_objc_unsafe_unretained  (** Obj-C __unsafe_unretained pointer *)
   | Pk_objc_autoreleasing  (** Obj-C __autoreleasing pointer *)
+  | Pk_swift_weak (** Swift weak pointer *)
+  | Pk_swift_unowned_safe (** Swift unowned pointer *)
+  | Pk_swift_unowned_unsafe (** Swift unowned(unsafe) pointer *)
 [@@deriving compare]
 
 val equal_ptr_kind : ptr_kind -> ptr_kind -> bool
@@ -192,6 +195,12 @@ module Name : sig
   end
 
   module CSharp : sig
+    val from_string : string -> t
+
+    val is_class : t -> bool
+  end
+
+  module Swift : sig
     val from_string : string -> t
 
     val is_class : t -> bool

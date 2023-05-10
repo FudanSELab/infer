@@ -56,6 +56,10 @@ module Name : sig
 
     val ns_object : t
   end
+
+  module Swift : sig
+    val swift_option : t
+  end
 end
 
 module Java : sig

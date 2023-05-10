@@ -92,6 +92,9 @@ type ptr_kind =
   | Pk_objc_weak  (** Obj-C __weak pointer *)
   | Pk_objc_unsafe_unretained  (** Obj-C __unsafe_unretained pointer *)
   | Pk_objc_autoreleasing  (** Obj-C __autoreleasing pointer *)
+  | Pk_swift_weak (** Swift weak pointer *)
+  | Pk_swift_unowned_safe (** Swift unowned pointer *)
+  | Pk_swift_unowned_unsafe (** Swift unowned(unsafe) pointer *)
 [@@deriving compare, equal, yojson_of, sexp, hash]
 
 let ptr_kind_string = function
@@ -107,6 +110,12 @@ let ptr_kind_string = function
       "__unsafe_unretained *"
   | Pk_objc_autoreleasing ->
       "__autoreleasing *"
+  | Pk_swift_weak ->
+      "__weak *"
+  | Pk_swift_unowned_safe ->
+      "__unowned_safe *"
+  | Pk_swift_unowned_unsafe ->
+      "__unowned_unsafe *"
 
 
 module T = struct

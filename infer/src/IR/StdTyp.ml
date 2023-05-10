@@ -62,6 +62,12 @@ module Name = struct
 
     let ns_object = from_string "NSObject"
   end
+
+  module Swift = struct
+    open Typ.Name.Swift
+
+    let swift_option = from_string "Option"
+  end
 end
 
 module Java = struct

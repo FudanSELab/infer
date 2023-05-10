@@ -293,6 +293,10 @@ let resolve_method ~method_exists tenv class_name proc_name =
           | CSharpClass _ ->
               (* multiple inheritance not possible, but cannot distinguish interfaces from typename so search all *)
               class_struct.supers
+          | SwiftClass _ ->
+              (*
+                 TODO: what's difference between CSharp & Java? *)
+              class_struct.supers
           | ObjcClass _ ->
               (* multiple inheritance impossible, but recursive calls will throw away protocols *)
               class_struct.supers
