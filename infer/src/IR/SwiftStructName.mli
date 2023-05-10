@@ -22,7 +22,8 @@ val pp : Format.formatter -> t -> unit
 val pp_with_verbosity : verbose:bool -> Format.formatter -> t -> unit
 (** if [verbose] then print package if present, otherwise only print struct *)
 
+val package : t -> string option
+
 val structname : t -> string
 
 module Normalizer : HashNormalizer.S with type t = t
- 

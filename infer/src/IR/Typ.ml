@@ -533,6 +533,15 @@ module Name = struct
     let is_class = function CSharpClass _ -> true | _ -> false
   end
 
+  module Swift = struct
+    let from_string name_str = SwiftClass (SwiftClassName.from_string name_str)
+
+    let is_class = function SwiftClass _ -> true | _ -> false
+
+    (*
+       TODO: is_struct *)
+  end
+
   module Hack = struct
     let static_companion typename =
       match typename with
@@ -877,7 +886,9 @@ let rec is_csharp_type t =
 
 let is_swift_primitive_type {desc} =
   let is_swift_int = function
-  | IInt | IBool | ISChar | IUShort | ILong | IShort -> (* TODO: maybe need more type *)
+  (*
+     TODO: maybe need more type *)
+  | IInt | IBool | ISChar | IUShort | ILong | IShort ->
     true
   | _ ->
     false
@@ -887,10 +898,12 @@ let is_swift_primitive_type {desc} =
 
 
 let is_swift_type t =
+    (*
+       TODO: need more specific, Pk_pointer | weak | unowned *)
     match t.desc with
     | Tvoid -> true
     | Tint _ | Tfloat _ -> is_swift_primitive_type t
-    | Tptr ({desc=Tstruct (SwiftClass _)}, _) -> true (* TODO: need more specific, Pk_pointer | weak | unowned *)
+    | Tptr ({desc=Tstruct (SwiftClass _)}, _) -> true
     | _ -> false
 
 
