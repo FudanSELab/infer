@@ -2252,6 +2252,10 @@ and sigma_imply tenv calc_index_frame calc_missing subs prop1 sigma2 : subst2 * 
           L.die InternalError "Erlang not supported"
       | Hack ->
           L.die InternalError "Hack not supported"
+      | Swift ->
+          (*
+             TODO: what's this? should swift support? and how swift support? *)
+          L.die InternalError "Swift not supported"
     in
     let const_string_texp =
       match !Language.curr_language with
@@ -2281,6 +2285,11 @@ and sigma_imply tenv calc_index_frame calc_missing subs prop1 sigma2 : subst2 * 
           L.die InternalError "Erlang not supported"
       | Hack ->
           L.die InternalError "Hack not supported"
+      | Swift ->
+          (*
+            In swift, const string is associated with "string_literal" and "apply"(string constructor)
+            TODO: what's this? should swift support? and how swift support? *)
+          L.die InternalError "Swift not supported"
     in
     Predicates.Hpointsto (root, sexp, const_string_texp)
   in

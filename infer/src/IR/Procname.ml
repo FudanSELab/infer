@@ -310,6 +310,7 @@ module Parameter = struct
     | JavaParameter of Typ.t
     | ClangParameter of clang_parameter
     | CSharpParameter of Typ.t
+    | SwiftParameter of Typ.t
     | ErlangParameter
   [@@deriving compare, equal]
 
@@ -488,7 +489,7 @@ module Swift = struct
 
   let get_receiver_name swft = Typ.Name.name swft.receiver_name
 
-  let get_class_type_name swft = swft.receiver_name
+  let get_receiver_type_name swft = swft.receiver_name
 
   let get_swift_receiver_name_exn swft =
     match swft.receiver_name with
@@ -785,6 +786,7 @@ type t =
   | Java of Java.t
   | Linters_dummy_method
   | ObjC_Cpp of ObjC_Cpp.t
+  | Swift of Swift.t
   | WithFunctionParameters of t * FunctionParameters.t * FunctionParameters.t list
 [@@deriving compare, equal, yojson_of, sexp, hash]
 
@@ -835,6 +837,14 @@ let rec compare_name x y =
     , ObjC_Cpp {class_name= class_name2; method_name= method_name2} ) ->
       Typ.Name.compare_name class_name1 class_name2
       <*> fun () -> String.compare method_name1 method_name2
+  | ( Swift {receiver_name=receiver_name1; method_name=method_name1}
+    , Swift {receiver_name=receiver_name2; method_name=method_name2} ) ->
+      Typ.Name.compare_name receiver_name1 receiver_name2
+      <*> fun () -> String.compare method_name1 method_name2
+  | Swift _, _ ->
+      -1
+  | _, Swift _ ->
+      1
   | CSharp _, _ ->
       -1
   | _, CSharp _ ->
@@ -908,6 +918,8 @@ let is_destructor t =
       false
 
 
+let is_swift t = match base_of t with Swift _ -> true | _ -> false
+
 let is_csharp t = match base_of t with CSharp _ -> true | _ -> false
 
 let is_hack t = match base_of t with Hack _ -> true | _ -> false
@@ -944,7 +956,7 @@ let rec on_objc_helper ~f ~default = function
       f objc_cpp_pname
   | WithFunctionParameters (base, _, _) ->
       on_objc_helper ~f ~default base
-  | Block _ | C _ | CSharp _ | Erlang _ | Hack _ | Java _ | Linters_dummy_method ->
+  | Block _ | C _ | CSharp _ | Erlang _ | Hack _ | Java _ | Swift _ | Linters_dummy_method ->
       default
 
 
@@ -1005,6 +1017,8 @@ let rec replace_class t (new_class : Typ.Name.t) =
       Java {j with class_name= new_class}
   | CSharp cs ->
       CSharp {cs with class_name= new_class}
+  | Swift swft ->
+      Swift {swft with receiver_name=new_class}
   | ObjC_Cpp osig ->
       ObjC_Cpp {osig with class_name= new_class}
   | Hack h ->
@@ -1028,6 +1042,8 @@ let get_class_type_name t =
       Some (Java.get_class_type_name java_pname)
   | CSharp cs_pname ->
       Some (CSharp.get_class_type_name cs_pname)
+  | Swift swift_name ->
+      Some (Swift.get_receiver_type_name swift_name)
   | ObjC_Cpp objc_pname ->
       Some (ObjC_Cpp.get_class_type_name objc_pname)
   | Block block ->
@@ -1044,6 +1060,8 @@ let get_class_name t =
       Some (Java.get_class_name java_pname)
   | CSharp cs_pname ->
       Some (CSharp.get_class_name cs_pname)
+  | Swift swift_pname ->
+      Some (Swift.get_receiver_name swift_pname)
   | ObjC_Cpp objc_pname ->
       Some (ObjC_Cpp.get_class_name objc_pname)
   | Block block ->
@@ -1064,7 +1082,7 @@ let rec objc_cpp_replace_method_name t (new_method_name : string) =
       ObjC_Cpp {osig with method_name= new_method_name}
   | WithFunctionParameters (base, func, functions) ->
       WithFunctionParameters (objc_cpp_replace_method_name base new_method_name, func, functions)
-  | C _ | CSharp _ | Block _ | Erlang _ | Hack _ | Linters_dummy_method | Java _ ->
+  | C _ | CSharp _ | Block _ | Erlang _ | Hack _ | Linters_dummy_method | Java _ | Swift _ ->
       t
 
 
@@ -1087,6 +1105,8 @@ let rec get_method = function
       j.method_name
   | CSharp cs ->
       cs.method_name
+  | Swift swft ->
+      swft.method_name
   | Linters_dummy_method ->
       "Linters_dummy_method"
 
@@ -1131,6 +1151,8 @@ let rec get_language = function
       Language.Java
   | CSharp _ ->
       Language.CIL
+  | Swift _ ->
+      Language.Swift
 
 
 (** [is_constructor pname] returns true if [pname] is a constructor *)
@@ -1160,9 +1182,9 @@ let is_infer_undefined pn =
 
 
 let rec is_static = function
-  | CSharp {kind= Static} | Java {kind= Static} | ObjC_Cpp {kind= ObjCClassMethod} ->
+  | Swift {kind=Static} | CSharp {kind= Static} | Java {kind= Static} | ObjC_Cpp {kind= ObjCClassMethod} ->
       Some true
-  | CSharp {kind= Non_Static} | Java {kind= Non_Static} | ObjC_Cpp {kind= ObjCInstanceMethod} ->
+  | Swift {kind=Non_Static} | CSharp {kind= Non_Static} | Java {kind= Non_Static} | ObjC_Cpp {kind= ObjCInstanceMethod} ->
       Some false
   | C _
   | Block _
@@ -1248,6 +1270,8 @@ let rec pp_unique_id fmt = function
       Java.pp Verbose fmt j
   | CSharp cs ->
       CSharp.pp Verbose fmt cs
+  | Swift swft ->
+      Swift.pp Verbose fmt swft
   | C osig ->
       C.pp Verbose fmt osig
   | Erlang e ->
@@ -1272,6 +1296,8 @@ let rec pp_with_verbosity verbosity fmt = function
       Java.pp verbosity fmt j
   | CSharp cs ->
       CSharp.pp verbosity fmt cs
+  | Swift swft ->
+      Swift.pp verbosity fmt swft
   | C osig ->
       C.pp verbosity fmt osig
   | Erlang e ->
@@ -1318,6 +1344,8 @@ let rec pp_name_only fmt = function
       Java.pp NameOnly fmt j
   | CSharp cs ->
       CSharp.pp NameOnly fmt cs
+  | Swift swft ->
+      Swift.pp NameOnly fmt swft
   | C osig ->
       C.pp NameOnly fmt osig
   | Erlang e ->
@@ -1345,6 +1373,8 @@ let rec pp_simplified_string ?(withclass = false) fmt = function
       Java.pp ~withclass Simple fmt j
   | CSharp cs ->
       CSharp.pp ~withclass Simple fmt cs
+  | Swift swft ->
+      Swift.pp ~withclass Simple fmt swft
   | C osig ->
       C.pp Simple fmt osig
   | Erlang e ->
@@ -1418,6 +1448,8 @@ let rec get_parameters procname =
       List.map ~f:(fun par -> Parameter.JavaParameter par) (Java.get_parameters j)
   | CSharp cs ->
       List.map ~f:(fun par -> Parameter.CSharpParameter par) (CSharp.get_parameters cs)
+  | Swift swft ->
+      List.map ~f:(fun par -> Parameter.SwiftParameter par) (Swift.get_parameters swft)
   | C osig ->
       clang_param_to_param (C.get_parameters osig)
   | Erlang e ->
@@ -1471,6 +1503,18 @@ let rec replace_parameters new_parameters procname =
               params )
       params
   in
+  let params_to_swift_params params =
+    List.map
+      ~f:(fun param ->
+        match param with
+        | Parameter.SwiftParameter par -> par
+        | _ ->
+          Logging.(die InternalError)
+            "Expected swift parameters in CSharp procname, but got parameters of another \
+            language"
+            params )
+      params
+  in
   let params_to_erlang_arity params =
     let check = function
       | Parameter.ErlangParameter ->
@@ -1487,6 +1531,8 @@ let rec replace_parameters new_parameters procname =
       Java (Java.replace_parameters (params_to_java_params new_parameters) j)
   | CSharp cs ->
       CSharp (CSharp.replace_parameters (params_to_csharp_params new_parameters) cs)
+  | Swift swft ->
+      Swift (Swift.replace_parameters (params_to_swift_params new_parameters) swft)
   | C osig ->
       C (C.replace_parameters (params_to_clang_params new_parameters) osig)
   | Erlang e ->
@@ -1638,7 +1684,7 @@ module Normalizer = HashNormalizer.Make (struct
     | Linters_dummy_method | WithFunctionParameters _ ->
         (* these kinds should not appear inside a type environment *)
         t
-    | Block _ | CSharp _ | Erlang _ | Hack _ ->
+    | Block _ | CSharp _ | Erlang _ | Hack _ | Swift _ ->
         (* TODO *)
         t
 end)

@@ -48,7 +48,7 @@ type t =
 type support = NoSupport | ExperimentalSupport | Support
 
 let mk_support_func ?(clang = NoSupport) ?(java = NoSupport) ?(csharp = NoSupport)
-    ?(erlang = NoSupport) ?(hack = NoSupport) () : Language.t -> support = function
+    ?(erlang = NoSupport) ?(hack = NoSupport) ?(swift = NoSupport) () : Language.t -> support = function
   | Clang ->
       clang
   | Java ->
@@ -59,6 +59,8 @@ let mk_support_func ?(clang = NoSupport) ?(java = NoSupport) ?(csharp = NoSuppor
       erlang
   | Hack ->
       hack
+  | Swift ->
+      swift
 
 
 (** see .mli for how to fill these *)
@@ -104,7 +106,7 @@ let config_unsafe checker =
             ; markdown_body=
                 "Read more about its foundations in the [Separation Logic and Biabduction \
                  page](separation-logic-and-bi-abduction)." }
-      ; support= mk_support_func ~clang:Support ~java:Support ~csharp:Support ()
+      ; support= mk_support_func ~clang:Support ~java:Support ~csharp:Support ~swift:Support ()
       ; short_documentation=
           "This analysis deals with a range of issues, many linked to memory safety."
       ; cli_flags= Some {deprecated= []; show_in_help= true}
@@ -360,6 +362,8 @@ let config_unsafe checker =
       { id= "racerd"
       ; kind=
           UserFacing {title= "RacerD"; markdown_body= [%blob "./documentation/checkers/RacerD.md"]}
+      (*
+         TODO: add swift support for RacerD in the future *)
       ; support= mk_support_func ~clang:Support ~java:Support ~csharp:Support ()
       ; short_documentation= "Thread safety analysis."
       ; cli_flags= Some {deprecated= ["-threadsafety"]; show_in_help= true}

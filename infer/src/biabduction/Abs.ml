@@ -1104,7 +1104,7 @@ let check_junk {InterproceduralAnalysis.proc_desc; err_log; tenv} prop =
                 when Language.curr_language_is Clang ->
                   (is_none ml_bucket_opt, exn_leak)
               | Some _, Rmemory _ ->
-                  (Language.curr_language_is Java || Language.curr_language_is CIL, exn_leak)
+                  (Language.curr_language_is Java || Language.curr_language_is CIL || Language.curr_language_is Swift, exn_leak)
               | Some _, Rignore ->
                   (true, exn_leak)
               | Some _, Rfile ->
@@ -1112,7 +1112,7 @@ let check_junk {InterproceduralAnalysis.proc_desc; err_log; tenv} prop =
               | Some _, Rlock ->
                   (false, exn_leak)
               | _ ->
-                  (Language.curr_language_is Java || Language.curr_language_is CIL, exn_leak)
+                  (Language.curr_language_is Java || Language.curr_language_is CIL || Language.curr_language_is Swift, exn_leak)
             in
             let already_reported () =
               let attr_opt_equal ao1 ao2 =
@@ -1133,7 +1133,7 @@ let check_junk {InterproceduralAnalysis.proc_desc; err_log; tenv} prop =
               || already_reported ()
             in
             let report_and_continue =
-              Language.curr_language_is Java || Language.curr_language_is CIL
+              Language.curr_language_is Java || Language.curr_language_is CIL || Language.curr_language_is Swift
               || !BiabductionConfig.footprint
             in
             let report_leak () =

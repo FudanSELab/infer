@@ -626,7 +626,7 @@ let prop_init_formals_seed tenv new_formals (prop : 'a Prop.t) : Prop.exposed Pr
         match !Language.curr_language with
         | Clang ->
             Exp.Sizeof {typ; nbytes= None; dynamic_length= None; subtype= Subtype.exact}
-        | Java | CIL ->
+        | Java | CIL | Swift ->
             Exp.Sizeof {typ; nbytes= None; dynamic_length= None; subtype= Subtype.subtypes}
         | Erlang ->
             L.die InternalError "Erlang not supported"
@@ -869,7 +869,9 @@ let custom_error_preconditions summary =
 let remove_this_not_null tenv prop =
   let collect_hpred (var_option, hpreds) = function
     | Predicates.Hpointsto (Exp.Lvar pvar, Eexp (Exp.Var var, _), _)
-      when (Language.curr_language_is Java || Language.curr_language_is CIL) && Pvar.is_this pvar ->
+      when ( Language.curr_language_is Java
+          || Language.curr_language_is CIL
+          || Language.curr_language_is Swift ) && Pvar.is_this pvar ->
         (Some var, hpreds)
     | hpred ->
         (var_option, hpred :: hpreds)

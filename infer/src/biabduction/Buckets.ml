@@ -78,7 +78,8 @@ let check_access access_opt de_opt =
         | Sil.Load {id; e= Exp.Lvar pvar} ->
             let is_java_this = Language.curr_language_is Java && Pvar.is_this pvar in
             let is_cil_this = Language.curr_language_is CIL && Pvar.is_this pvar in
-            if ((not is_java_this) && not is_cil_this) && is_formal pvar then Some id else None
+            let is_swift_this = Language.curr_language_is Swift && Pvar.is_this pvar in
+            if ((not is_java_this) && (not is_cil_this) && (not is_swift_this)) && is_formal pvar then Some id else None
         | _ ->
             None
       in

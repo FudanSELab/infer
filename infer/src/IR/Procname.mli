@@ -133,6 +133,7 @@ module Parameter : sig
     | JavaParameter of Typ.t
     | ClangParameter of clang_parameter
     | CSharpParameter of Typ.t
+    | SwiftParameter of Typ.t
     | ErlangParameter
   [@@deriving compare, equal]
 
@@ -181,6 +182,37 @@ module ObjC_Cpp : sig
 
   val is_inner_destructor : t -> bool
   (** Check if this is a frontend-generated "inner" destructor (see D5834555/D7189239) *)
+end
+
+module Swift : sig
+  type kind =
+    | Non_Static
+    | Static
+  [@@deriving compare]
+
+  type t [@@deriving compare]
+
+  val constructor_method_name : string
+
+  val get_receiver_name : t -> string
+
+  val get_receiver_type_name : t -> Typ.Name.t
+
+  val get_simple_receiver_name : t -> string
+
+  val get_package : t -> string option
+
+  val get_method : t -> string
+
+  val get_parameters : t -> Typ.t list
+
+  val get_return_typ : t -> Typ.t
+
+  val replace_parameters : Typ.t list -> t -> t
+
+  val is_constructor : t -> bool
+
+  val is_static : t -> bool
 end
 
 module C : sig
@@ -249,6 +281,7 @@ type t =
   | Java of Java.t
   | Linters_dummy_method
   | ObjC_Cpp of ObjC_Cpp.t
+  | Swift of Swift.t
   | WithFunctionParameters of t * FunctionParameters.t * FunctionParameters.t list
 [@@deriving compare, yojson_of, sexp, hash]
 
@@ -395,6 +428,9 @@ val is_constructor : t -> bool
 
 val is_csharp : t -> bool
 (** Check if this is a CSharp procedure name. *)
+
+val is_swift : t -> bool
+(** Check if this is a Swift procedure name. *)
 
 val is_hack : t -> bool
 (** Check if this is a Hack procedure name. *)
