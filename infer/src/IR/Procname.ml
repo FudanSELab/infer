@@ -466,9 +466,7 @@ module Swift = struct
   type t =
     { method_name: string
     ; parameters: Typ.t list
-    (*
-       TODO: a better name for struct / enum / extension *)
-    ; class_name: Typ.Name.t
+    ; receiver_name: Typ.Name.t
     ; return_type: Typ.t option
     ; kind: kind }
     [@@deriving compare, equal, yojson_of, sexp, hash]
@@ -477,9 +475,9 @@ module Swift = struct
     if not (Typ.is_swift_type t) then
       L.die InternalError "Expected swift type but got %a@." (Typ.pp_full Pp.text) t
 
-  let make ~class_name ~method_name ~parameters ~return_type ~kind () =
+  let make ~receiver_name ~method_name ~parameters ~return_type ~kind () =
     Option.iter return_type ~f:ensure_swift_type ;
-    {class_name; method_name; parameters; return_type; kind}
+    {receiver_name; method_name; parameters; return_type; kind}
 
   (*
      TODO: Now use Typ.pp_cs, adad Typ.pp_swift & SwiftConfig.ml (identical to JConfig.ml)
@@ -488,18 +486,19 @@ module Swift = struct
 
   let constructor_method_name = "init"
 
-  let get_class_name swft = Typ.Name.name swft.class_name
+  let get_receiver_name swft = Typ.Name.name swft.receiver_name
 
-  let get_class_type_name swft = swft.class_name
+  let get_class_type_name swft = swft.receiver_name
 
-  let get_swift_class_name_exn swft =
-    match swft.class_name with
+  let get_swift_receiver_name_exn swft =
+    match swft.receiver_name with
     | Typ.SwiftClass swift_class_name -> swift_class_name
+    | Typ.SwiftStruct swift_struct_name -> swift_struct_name
     | _ -> L.die InternalError "Asked for swift class name but got something else"
 
-  let get_simple_class_name swft = SwiftTypeName.typename (get_swift_class_name_exn swft)
+  let get_simple_receiver_name swft = SwiftTypeName.typename (get_swift_receiver_name_exn swft)
 
-  let get_package swft = SwiftTypeName.package (get_swift_class_name_exn swft)
+  let get_package swft = SwiftTypeName.package (get_swift_receiver_name_exn swft)
 
   let get_method swft = swft.method_name
 
@@ -517,15 +516,15 @@ module Swift = struct
 
   let pp ?(withclass = false) verbosity fmt swft =
     let verbose = is_verbose verbosity in
-    let pp_class_name_dot fmt j =
-      SwiftTypeName.pp_with_verbosity ~verbose fmt (get_swift_class_name_exn j) ;
+    let pp_receiver_name_dot fmt j =
+      SwiftTypeName.pp_with_verbosity ~verbose fmt (get_swift_receiver_name_exn j) ;
       F.pp_print_char fmt '.'
     in
     let pp_package_method_and_params fmt swft =
       (*
          TODO: pp_cs also *)
       let pp_param_list fmt params = Pp.seq ~sep:"," (Typ.pp_cs ~verbose) fmt params in
-      F.fprintf fmt "%a%s(%a)" pp_class_name_dot swft swft.method_name pp_param_list swft.parameters
+      F.fprintf fmt "%a%s(%a)" pp_receiver_name_dot swft swft.method_name pp_param_list swft.parameters
     in
     match verbosity with
     | Verbose ->
@@ -543,15 +542,15 @@ module Swift = struct
         (* [methodname(...)] or without ... if there are no parameters *)
         let pp_method_name fmt swft =
           if String.equal swft.method_name constructor_method_name then
-            F.pp_print_string fmt (get_simple_class_name swft)
+            F.pp_print_string fmt (get_simple_receiver_name swft)
           else (
-            if withclass then pp_class_name_dot fmt swft ;
+            if withclass then pp_receiver_name_dot fmt swft ;
             F.pp_print_string fmt swft.method_name )
         in
         F.fprintf fmt "%a(%s)" pp_method_name swft params
     | NameOnly ->
         (* [class.method], for simple name matching *)
-        F.fprintf fmt "%a%s" pp_class_name_dot swft swft.method_name
+        F.fprintf fmt "%a%s" pp_receiver_name_dot swft swft.method_name
 end
 
 module C = struct

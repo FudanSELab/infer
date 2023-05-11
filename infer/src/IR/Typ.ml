@@ -146,7 +146,7 @@ module T = struct
         {name: QualifiedCppName.t; template_spec_info: template_spec_info; is_union: bool [@ignore]}
     | CSharpClass of CSharpClassName.t
     (*
-       TODO: SwiftClass / SwiftStruct of SwiftTypeName.t *)
+       TODO: SwiftEnum / SwiftExtension of SwiftTypeName.t *)
     | SwiftClass of SwiftTypeName.t
     | SwiftStruct of SwiftTypeName.t
     | ErlangType of ErlangTypeName.t
@@ -919,12 +919,11 @@ let is_swift_primitive_type {desc} =
 
 
 let is_swift_type t =
-    (*
-       TODO: need more specific, Pk_pointer | weak | unowned *)
     match t.desc with
     | Tvoid -> true
     | Tint _ | Tfloat _ -> is_swift_primitive_type t
-    | Tptr ({desc=Tstruct (SwiftClass _)}, _) -> true
+    | Tptr ({desc=Tstruct (SwiftClass _)}, _) -> true (* Pk_pointer | weak | unowned *)
+    | Tstruct (SwiftStruct _) -> true
     | _ -> false
 
 
