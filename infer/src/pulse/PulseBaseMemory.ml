@@ -65,6 +65,8 @@ module Access = struct
               false
           | Some (_, typ, anns) -> (
             match typ.Typ.desc with
+            (*
+               TODO: Pk_swift ? *)
             | Tptr (_, (Pk_objc_weak | Pk_objc_unsafe_unretained)) ->
                 false
             | _ ->

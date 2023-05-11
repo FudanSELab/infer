@@ -59,7 +59,9 @@ let edge_is_strong tenv obj_edge =
   let open RetainCyclesType in
   let has_weak_type (t : Typ.t) =
     match t.Typ.desc with
-    | Typ.Tptr (_, Typ.Pk_objc_weak) | Typ.Tptr (_, Typ.Pk_objc_unsafe_unretained) ->
+    | Typ.Tptr (_, Typ.Pk_objc_weak) | Typ.Tptr (_, Typ.Pk_objc_unsafe_unretained)
+    | Typ.Tptr (_, Typ.Pk_swift_weak) | Typ.Tptr (_, Typ.Pk_swift_unowned_safe)
+    | Typ.Tptr (_, Typ.Pk_swift_unowned_unsafe) ->
         true
     | _ ->
         false
@@ -121,7 +123,9 @@ let get_cycle_blocks root_node exp =
       List.find_map
         ~f:(fun (e, var, typ, _) ->
           match typ.Typ.desc with
-          | Typ.Tptr (_, Typ.Pk_objc_weak) | Typ.Tptr (_, Typ.Pk_objc_unsafe_unretained) ->
+          | Typ.Tptr (_, Typ.Pk_objc_weak) | Typ.Tptr (_, Typ.Pk_objc_unsafe_unretained)
+          | Typ.Tptr (_, Typ.Pk_swift_weak) | Typ.Tptr (_, Typ.Pk_swift_unowned_safe)
+          | Typ.Tptr (_, Typ.Pk_swift_unowned_unsafe) ->
               None
           | _ ->
               if Exp.equal e root_node.RetainCyclesType.rc_node_exp then Some (name, var) else None
@@ -137,7 +141,9 @@ let get_weak_alias_type prop e =
     match hpred with
     | Predicates.Hpointsto (_, Eexp (e', _), Sizeof {typ}) -> (
       match typ.Typ.desc with
-      | (Typ.Tptr (_, Typ.Pk_objc_weak) | Typ.Tptr (_, Typ.Pk_objc_unsafe_unretained))
+      | Typ.Tptr (_, Typ.Pk_objc_weak) | Typ.Tptr (_, Typ.Pk_objc_unsafe_unretained)
+      | Typ.Tptr (_, Typ.Pk_swift_weak) | Typ.Tptr (_, Typ.Pk_swift_unowned_safe)
+      | Typ.Tptr (_, Typ.Pk_swift_unowned_unsafe)
         when Exp.equal e' e ->
           Some typ
       | _ ->

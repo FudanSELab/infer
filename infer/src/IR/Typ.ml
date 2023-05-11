@@ -263,7 +263,9 @@ let is_trivially_copyable {is_trivially_copyable} = is_trivially_copyable
 
 let is_volatile {is_volatile} = is_volatile
 
-let is_weak_pointer t = match t.desc with Tptr (_, Pk_objc_weak) -> true | _ -> false
+let is_weak_pointer t = match t.desc with
+    | Tptr (_, (Pk_objc_weak | Pk_swift_weak)) -> true
+    | _ -> false
 
 let is_strong_pointer t = match t.desc with Tptr (_, Pk_pointer) -> true | _ -> false
 
