@@ -95,7 +95,8 @@ and name =
           "MyClass<int>", "InnerClass" *)
   | CppClass of {name: QualifiedCppName.t; template_spec_info: template_spec_info; is_union: bool}
   | CSharpClass of CSharpClassName.t
-  | SwiftClass of SwiftClassName.t
+  | SwiftClass of SwiftTypeName.t
+  | SwiftStruct of SwiftTypeName.t
   | ErlangType of ErlangTypeName.t
   | HackClass of HackClassName.t
   | JavaClass of JavaClassName.t
@@ -204,6 +205,8 @@ module Name : sig
     val from_string : string -> t
 
     val is_class : t -> bool
+
+    val is_struct : t -> bool
   end
 
   module Hack : sig

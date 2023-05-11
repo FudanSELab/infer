@@ -9,7 +9,7 @@ open! IStd
 
 type t [@@deriving compare, equal, yojson_of, sexp, hash]
 
-val make : package:string option -> structname:string -> t
+val make : package:string option -> typename:string -> t
 
 val from_string : string -> t
 
@@ -20,10 +20,10 @@ val pp : Format.formatter -> t -> unit
 (** [pp] includes package if any *)
 
 val pp_with_verbosity : verbose:bool -> Format.formatter -> t -> unit
-(** if [verbose] then print package if present, otherwise only print struct *)
+(** if [verbose] then print package if present, otherwise only print class *)
 
 val package : t -> string option
 
-val structname : t -> string
+val typename : t -> string
 
 module Normalizer : HashNormalizer.S with type t = t

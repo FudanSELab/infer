@@ -466,6 +466,8 @@ module Swift = struct
   type t =
     { method_name: string
     ; parameters: Typ.t list
+    (*
+       TODO: a better name for struct / enum / extension *)
     ; class_name: Typ.Name.t
     ; return_type: Typ.t option
     ; kind: kind }
@@ -495,9 +497,9 @@ module Swift = struct
     | Typ.SwiftClass swift_class_name -> swift_class_name
     | _ -> L.die InternalError "Asked for swift class name but got something else"
 
-  let get_simple_class_name swft = SwiftClassName.classname (get_swift_class_name_exn swft)
+  let get_simple_class_name swft = SwiftTypeName.typename (get_swift_class_name_exn swft)
 
-  let get_package swft = SwiftClassName.package (get_swift_class_name_exn swft)
+  let get_package swft = SwiftTypeName.package (get_swift_class_name_exn swft)
 
   let get_method swft = swft.method_name
 
@@ -516,7 +518,7 @@ module Swift = struct
   let pp ?(withclass = false) verbosity fmt swft =
     let verbose = is_verbose verbosity in
     let pp_class_name_dot fmt j =
-      SwiftClassName.pp_with_verbosity ~verbose fmt (get_swift_class_name_exn j) ;
+      SwiftTypeName.pp_with_verbosity ~verbose fmt (get_swift_class_name_exn j) ;
       F.pp_print_char fmt '.'
     in
     let pp_package_method_and_params fmt swft =

@@ -145,7 +145,10 @@ module T = struct
     | CppClass of
         {name: QualifiedCppName.t; template_spec_info: template_spec_info; is_union: bool [@ignore]}
     | CSharpClass of CSharpClassName.t
-    | SwiftClass of SwiftClassName.t
+    (*
+       TODO: SwiftClass / SwiftStruct of SwiftTypeName.t *)
+    | SwiftClass of SwiftTypeName.t
+    | SwiftStruct of SwiftTypeName.t
     | ErlangType of ErlangTypeName.t
     | HackClass of HackClassName.t
     | JavaClass of JavaClassName.t
@@ -344,7 +347,9 @@ and pp_name_c_syntax pe f = function
   | CSharpClass name ->
       CSharpClassName.pp f name
   | SwiftClass name ->
-      SwiftClassName.pp f name
+      SwiftTypeName.pp f name
+  | SwiftStruct name ->
+      SwiftTypeName.pp f name
 
 
 and pp_template_spec_info pe f = function
@@ -405,10 +410,16 @@ module Name = struct
     | _, CSharpClass _ ->
         1
     | SwiftClass name1, SwiftClass name2 ->
-        String.compare (SwiftClassName.classname name1) (SwiftClassName.classname name2)
+        String.compare (SwiftTypeName.typename name1) (SwiftTypeName.typename name2)
     | SwiftClass _, _ ->
         -1
     | _, SwiftClass _ ->
+        1
+    | SwiftStruct name1, SwiftStruct name2 ->
+        String.compare (SwiftTypeName.typename name1) (SwiftTypeName.typename name2)
+    | SwiftStruct _, _ ->
+        -1
+    | _, SwiftStruct _ ->
         1
     | ErlangType name1, ErlangType name2 ->
         ErlangTypeName.compare name1 name2
@@ -444,7 +455,7 @@ module Name = struct
     | CppClass {name; template_spec_info} ->
         let template_suffix = F.asprintf "%a" (pp_template_spec_info Pp.text) template_spec_info in
         QualifiedCppName.append_template_args_to_last name ~args:template_suffix
-    | JavaClass _ | CSharpClass _ | ErlangType _ | HackClass _ | SwiftClass _ ->
+    | JavaClass _ | CSharpClass _ | ErlangType _ | HackClass _ | SwiftClass _ | SwiftStruct _ ->
         QualifiedCppName.empty
 
 
@@ -453,7 +464,7 @@ module Name = struct
         name
     | CppClass {name} ->
         name
-    | JavaClass _ | CSharpClass _ | ErlangType _ | HackClass _ | SwiftClass _ ->
+    | JavaClass _ | CSharpClass _ | ErlangType _ | HackClass _ | SwiftClass _ | SwiftStruct _ ->
         QualifiedCppName.empty
 
 
@@ -475,7 +486,9 @@ module Name = struct
     | CSharpClass name ->
         CSharpClassName.to_string name
     | SwiftClass name ->
-        SwiftClassName.to_string name
+        SwiftTypeName.to_string name
+    | SwiftStruct name ->
+        SwiftTypeName.to_string name
     | ErlangType name ->
         ErlangTypeName.to_string name
     | HackClass name ->
@@ -484,7 +497,7 @@ module Name = struct
 
   let pp fmt tname =
     let prefix = function
-      | CStruct _ ->
+      | CStruct _ | SwiftStruct _ ->
           "struct"
       | CUnion _ ->
           "union"
@@ -505,7 +518,7 @@ module Name = struct
   let is_class = function
     | CppClass _ | JavaClass _ | HackClass _ | ObjcClass _ | CSharpClass _ | SwiftClass _ ->
         true
-    | CStruct _ | CUnion _ | ErlangType _ | ObjcProtocol _ ->
+    | CStruct _ | CUnion _ | ErlangType _ | ObjcProtocol _ | SwiftStruct _ ->
         false
 
 
@@ -543,12 +556,11 @@ module Name = struct
   end
 
   module Swift = struct
-    let from_string name_str = SwiftClass (SwiftClassName.from_string name_str)
+    let from_string name_str = SwiftClass (SwiftTypeName.from_string name_str)
 
     let is_class = function SwiftClass _ -> true | _ -> false
 
-    (*
-       TODO: is_struct *)
+    let is_struct = function SwiftStruct _ -> true | _ -> false
   end
 
   module Hack = struct
@@ -1042,6 +1054,9 @@ and NameNormalizer : (HashNormalizer.S with type t = name) = HashNormalizer.Make
         let cs_class_name' = CSharpClassName.Normalizer.normalize cs_class_name in
         if phys_equal cs_class_name cs_class_name' then t else CSharpClass cs_class_name'
     | SwiftClass swift_class_name ->
-        let swift_class_name' = SwiftClassName.Normalizer.normalize swift_class_name in
+        let swift_class_name' = SwiftTypeName.Normalizer.normalize swift_class_name in
         if phys_equal swift_class_name swift_class_name' then t else SwiftClass swift_class_name'
+    | SwiftStruct swift_struct_name ->
+        let swift_struct_name' = SwiftTypeName.Normalizer.normalize swift_struct_name in
+        if phys_equal swift_struct_name swift_struct_name' then t else SwiftClass swift_struct_name'
 end)

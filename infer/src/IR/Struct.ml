@@ -24,6 +24,8 @@ type java_class_info =
 
 let pp_java_class_info_opt fmt jopt = Pp.option pp_java_class_info fmt jopt
 
+(*
+   TODO: for swift field *)
 (** Type for a structured value. *)
 type t =
   { fields: fields  (** non-static fields *)
@@ -358,6 +360,12 @@ let merge typename ~newer ~current =
   | CSharpClass _ when is_dummy current ->
       newer
   | CSharpClass _ ->
+      full_merge ~newer ~current
+  | SwiftClass _ when is_dummy newer ->
+      current
+  | SwiftClass _ when is_dummy current ->
+      newer
+  | SwiftClass _ ->
       full_merge ~newer ~current
   | HackClass _ when is_dummy newer ->
       current
