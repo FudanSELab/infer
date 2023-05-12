@@ -194,6 +194,8 @@ module Swift : sig
 
   val constructor_method_name : string
 
+  val deconstructor_method_name : string
+
   val get_receiver_name : t -> string
 
   val get_receiver_type_name : t -> Typ.Name.t
@@ -380,6 +382,15 @@ val make_csharp :
   -> kind:CSharp.kind
   -> t
 (** Create a CSharp procedure name. *)
+
+val make_swift :
+     receiver_name:Typ.Name.t
+  -> return_type:Typ.t option
+  -> method_name:string
+  -> parameters:Typ.t list
+  -> kind:Swift.kind
+  -> t
+(** Create a Swift procedure name. *)
 
 val make_erlang : module_name:string -> function_name:string -> arity:int -> t
 (** Create an Erlang procedure name. *)

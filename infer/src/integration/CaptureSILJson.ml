@@ -25,10 +25,22 @@ module IntHash = struct
 end
 
 module IntTbl = Hashtbl.Make (IntHash)
+module SwiftClassNameSet = Set.Make(String)
+module SwiftStructNameSet = Set.Make(String)
+
+let scn_set = ref SwiftClassNameSet.empty
+let ssn_set = ref SwiftStructNameSet.empty
 
 exception JsonParse_Error of string
 
-let typename_of_classname cn = Typ.Name.CSharp.from_string cn
+let parsing_language = ref Language.CIL
+
+
+let typename_of_classname cn = match !parsing_language with
+  | Language.CIL -> Typ.Name.CSharp.from_string cn
+  | Language.Swift -> Typ.Name.Swift.from_string cn
+  | _ ->
+    raise (JsonParse_Error "typename_of_classname not support this kind of language type")
 
 let parse_list (eleparse : Safe.t -> 'a) (json : Safe.t) = List.map ~f:eleparse (to_list json)
 
@@ -38,21 +50,26 @@ let parse_list_parameters (eleparse : Safe.t -> 'a) (json : Safe.t) =
   List.map ~f:eleparse (to_list json) |> List.map ~f:parse_parameter
 
 
-let parse_cil_type_name (str : string) : Typ.t =
+let parse_type_name (str : string) : Typ.t =
   let r = Str.regexp "\\." in
   try
     let n = Str.search_backward r str (String.length str) in
     let _namespace = Str.string_before str n in
     let _name = Str.string_after str (n + 1) in
-    Typ.(
-      mk_ptr
-        (mk_struct
-           (CSharpClass (CSharpClassName.make ~namespace:(Some _namespace) ~classname:_name)) ) )
+    match !parsing_language with
+    | Language.CIL -> Typ.(mk_ptr(mk_struct
+            (CSharpClass (CSharpClassName.make ~namespace:(Some _namespace) ~classname:_name)) ) )
+    | Language.Swift when SwiftClassNameSet.mem !scn_set str -> Typ.(mk_ptr(mk_struct
+            (SwiftClass (SwiftTypeName.make ~package:(Some _namespace) ~typename:_name))))
+    | Language.Swift when SwiftStructNameSet.mem !ssn_set str -> Typ.(mk_ptr(mk_struct
+            (SwiftStruct (SwiftTypeName.make ~package:(Some _namespace) ~typename:_name))))
+    | _ ->
+      raise (JsonParse_Error "parse_type_name don't support other languages, except CIL & Swift.")
   with _ ->
     Typ.(mk_ptr (mk_struct (CSharpClass (CSharpClassName.make ~namespace:None ~classname:str))))
 
 
-let parse_cil_procname (json : Safe.t) : Procname.t =
+let parse_procname (json : Safe.t) : Procname.t =
   let method_name = to_string (member "method_name" json) in
   match method_name with
   | "__new" ->
@@ -74,17 +91,38 @@ let parse_cil_procname (json : Safe.t) : Procname.t =
   | "__get_array_length" ->
       BuiltinDecl.__get_array_length
   | _ ->
-      let return_type =
-        if String.equal Procname.CSharp.constructor_method_name method_name then None
-        else Some (to_string (member "return_type" json) |> parse_cil_type_name)
-      in
-      let class_name = to_string (member "class_name" json) |> Typ.Name.CSharp.from_string in
-      let param_types = parse_list to_string (member "parameters" json) in
-      let params = List.map ~f:parse_cil_type_name param_types in
-      let is_static = to_bool (member "is_static" json) in
-      let method_kind = if is_static then Procname.CSharp.Static else Procname.CSharp.Non_Static in
-      Procname.make_csharp ~class_name ~return_type ~method_name ~parameters:params
-        ~kind:method_kind
+      match !parsing_language with
+      | Language.CIL ->
+        let return_type =
+          if String.equal Procname.CSharp.constructor_method_name method_name then None
+          else Some (to_string (member "return_type" json) |> parse_type_name)
+        in
+        let class_name = to_string (member "class_name" json) |> Typ.Name.CSharp.from_string in
+        let param_types = parse_list to_string (member "parameters" json) in
+        let params = List.map ~f:parse_type_name param_types in
+        let is_static = to_bool (member "is_static" json) in
+        let method_kind = if is_static
+          then Procname.CSharp.Static
+          else Procname.CSharp.Non_Static in
+        Procname.make_csharp ~class_name ~return_type ~method_name
+          ~parameters:params ~kind:method_kind
+      | Language.Swift ->
+        let return_type =
+          if String.equal Procname.Swift.constructor_method_name method_name then None
+          else if String.equal Procname.Swift.deconstructor_method_name method_name then None
+          else Some (to_string (member "return_type" json) |> parse_type_name)
+        in
+        let class_name = to_string (member "class_name" json) |> Typ.Name.Swift.from_string in
+        let param_types = parse_list to_string (member "parameters" json) in
+        let params = List.map ~f:parse_type_name param_types in
+        let is_static = to_bool (member "is_static" json) in
+        let method_kind = if is_static
+          then Procname.Swift.Static
+          else Procname.Swift.Non_Static in
+        Procname.make_swift ~receiver_name:class_name ~return_type 
+          ~method_name ~parameters:params ~kind:method_kind
+      | _ -> raise (JsonParse_Error
+        "parse_procname (class_name) not support other languages, except CIL & Swift")
 
 
 let parse_ikind (json : Safe.t) =
@@ -146,7 +184,17 @@ let parse_csu (json : Safe.t) =
   | "Class" ->
       typename_of_classname name
   | _ ->
-      raise (JsonParse_Error "JSON Parse Error: Can only parse Class types so far.")
+      raise (JsonParse_Error "JSON Parse Error: CIL can only parse Class types so far.")
+
+
+let parse_swu (json : Safe.t) =
+  let swu = to_string (member "swu_kind" json) in
+  let name = to_string (member "name" json) in
+  match swu with
+  | "Class" -> (scn_set := SwiftClassNameSet.add !scn_set name; typename_of_classname name)
+  | "Struct" -> (ssn_set := SwiftStructNameSet.add !ssn_set name; typename_of_classname name)
+  | _ ->
+    raise (JsonParse_Error "JSON Parse Error: Swift can only parse Class and Struct types so far.")
 
 
 let parse_unop (json : Safe.t) =
@@ -184,12 +232,20 @@ let parse_binop (json : Safe.t) =
   List.Assoc.find_exn ~equal:String.equal binop_map (to_string json)
 
 
+(* This function will update "parsing_language" *)
 let parse_typename (json : Safe.t) =
   let tname = to_string (member "type_name_kind" json) in
-  if String.equal tname "TN_typedef" then typename_of_classname (to_string (member "name" json))
-  else if String.equal tname "CsuTypeName" then parse_csu json
-    (*what about if the name is <Module>*)
-  else Logging.die InternalError "Can't parse typename"
+  match tname with
+  | "TN_typedef" -> (
+      parsing_language := Language.CIL;
+      typename_of_classname (to_string (member "name" json)))
+  | "CsuTypeName" -> (
+      parsing_language := Language.CIL;
+      parse_csu json)
+  | "SwuTypeName" -> (
+      parsing_language := Language.Swift;
+      parse_swu json)
+  | _ -> raise (JsonParse_Error "Can't parse typename")
 
 
 let parse_long (json : Safe.t) = Int64.of_string (Yojson.Safe.to_string json)
@@ -237,10 +293,10 @@ let rec parse_pvar (json : Safe.t) =
   let pvname = Mangled.from_string (to_string (member "pv_name" json)) in
   let pvkind = to_string (member "pv_kind" json) in
   if String.equal pvkind "LocalVariable" then
-    let pname = parse_cil_procname (member "proc_name" json) in
+    let pname = parse_procname (member "proc_name" json) in
     Pvar.mk pvname pname
   else if String.equal pvkind "CalledVariable" then
-    let pname = parse_cil_procname (member "proc_name" json) in
+    let pname = parse_procname (member "proc_name" json) in
     Pvar.mk_callee pvname pname
   else if String.equal pvkind "GlobalVariable" then Pvar.mk_global pvname
   else Logging.die InternalError "Unknown program variable kind %s" pvkind
@@ -258,7 +314,7 @@ and parse_constant (json : Safe.t) =
       Const.Cfloat f
     with _ -> Const.Cfloat Float.nan
   else if String.equal const_kind "Fun" then
-    let pname = parse_cil_procname const_value in
+    let pname = parse_procname const_value in
     Const.Cfun pname
   else if String.equal const_kind "Str" then Const.Cstr (to_string const_value)
   else if String.equal const_kind "Class" then
@@ -369,8 +425,12 @@ and parse_item_annotation (json : Safe.t) : Annot.Item.t =
 and parse_struct (json : Safe.t) =
   let fields = parse_list parse_struct_field (member "instance_fields" json) in
   let statics = parse_list parse_struct_field (member "static_fields" json) in
-  let supers = parse_list parse_csu (member "supers" json) in
-  let methods = parse_list parse_cil_procname (member "methods" json) in
+  let supers = match !parsing_language with
+    | Language.CIL -> parse_list parse_csu (member "supers" json)
+    | Language.Swift -> parse_list parse_swu (member "supers" json)
+    | _ -> L.die InternalError "parse_struct don't support %s" (Language.to_string !parsing_language)
+  in
+  let methods = parse_list parse_procname (member "methods" json) in
   let annots = parse_item_annotation json in
   (fields, statics, supers, methods, annots)
 
@@ -438,7 +498,7 @@ let parse_proc_attributes (json : Safe.t) =
   let locals = parse_list parse_proc_attributes_locals (member "locals" json) in
   let loc = parse_location (member "loc" json) in
   let file = loc.file in
-  let proc_name = parse_cil_procname (member "proc_name" json) in
+  let proc_name = parse_procname (member "proc_name" json) in
   { (ProcAttributes.default file proc_name) with
     access
   ; captured
@@ -716,7 +776,7 @@ let parse_tenv (json : Safe.t) =
 
 let capture ~cfg_json ~tenv_json =
   let tenv = parse_tenv (Yojson.Safe.from_file tenv_json) in
-  let cfg = parse_cfg (Yojson.Safe.from_file cfg_json) in
+  (* let cfg = parse_cfg (Yojson.Safe.from_file cfg_json) in *)
   Tenv.store_global ~normalize:true tenv ;
-  store cfg ;
+  (* store cfg ; *)
   ()

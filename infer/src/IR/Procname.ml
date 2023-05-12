@@ -487,6 +487,8 @@ module Swift = struct
 
   let constructor_method_name = "init"
 
+  let deconstructor_method_name = "deinit"
+
   let get_receiver_name swft = Typ.Name.name swft.receiver_name
 
   let get_receiver_type_name swft = swft.receiver_name
@@ -1574,6 +1576,10 @@ let make_java ~class_name ~return_type ~method_name ~parameters ~kind =
 
 let make_csharp ~class_name ~return_type ~method_name ~parameters ~kind =
   CSharp (CSharp.make ~class_name ~return_type ~method_name ~parameters ~kind ())
+
+
+let make_swift ~receiver_name ~return_type ~method_name ~parameters ~kind =
+  Swift (Swift.make ~receiver_name ~return_type ~method_name ~parameters ~kind ())
 
 
 let make_erlang ~module_name ~function_name ~arity = Erlang {module_name; function_name; arity}

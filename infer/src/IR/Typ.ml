@@ -925,6 +925,8 @@ let is_swift_type t =
     | Tvoid -> true
     | Tint _ | Tfloat _ -> is_swift_primitive_type t
     | Tptr ({desc=Tstruct (SwiftClass _)}, _) -> true (* Pk_pointer | weak | unowned *)
+    | Tptr ({desc=Tstruct (SwiftStruct _)}, _) -> true
+    | Tstruct (SwiftClass _) -> true
     | Tstruct (SwiftStruct _) -> true
     | _ -> false
 
