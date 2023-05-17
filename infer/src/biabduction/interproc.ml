@@ -357,6 +357,7 @@ let pp_name fmt = F.pp_print_string fmt "biabduction"
 (** Perform symbolic execution for a node starting from an initial prop *)
 let do_symbolic_execution ({InterproceduralAnalysis.tenv; _} as analysis_data) proc_cfg handle_exn
     (node : ProcCfg.Exceptional.Node.t) (prop : Prop.normal Prop.t) (path : Paths.Path.t) =
+  let () = print_string "do_symbolic_execution begin\n" in
   State.mark_execution_start node ;
   let instrs = ProcCfg.Exceptional.instrs node in
   (* fresh normal vars must be fresh w.r.t. instructions *)
@@ -375,6 +376,7 @@ let do_symbolic_execution ({InterproceduralAnalysis.tenv; _} as analysis_data) p
 
 let forward_tabulate ({InterproceduralAnalysis.proc_desc; err_log; tenv; _} as analysis_data)
     proc_cfg summary wl =
+  let () = print_string "forward_tabulate begin\n" in
   let pname = Procdesc.get_proc_name (ProcCfg.Exceptional.proc_desc proc_cfg) in
   let handle_exn_node curr_node exn =
     Exceptions.print_exception_html "Failure of symbolic execution: " exn ;
@@ -686,6 +688,7 @@ let initial_prop_from_pre tenv curr_f pre =
 let execute_filter_prop ({InterproceduralAnalysis.tenv; _} as analysis_data) proc_cfg summary
     (precondition : Prop.normal BiabductionSummary.Jprop.t) :
     Prop.normal BiabductionSummary.spec option =
+  let () = print_string "execute_filter_prop begin\n" in
   let init_node = ProcCfg.Exceptional.start_node proc_cfg in
   let wl = path_set_create_worklist proc_cfg in
   let pdesc = ProcCfg.Exceptional.proc_desc proc_cfg in
@@ -750,6 +753,7 @@ type exe_phase =
     [go ()] was interrupted by and exception. *)
 let perform_analysis_phase ({InterproceduralAnalysis.proc_desc; err_log; tenv} as analysis_data)
     (proc_cfg : ProcCfg.Exceptional.t) summary_opt : exe_phase =
+  let () = print_string "perform_analysis_phase begin\n" in
   let pname = Procdesc.get_proc_name proc_desc in
   let start_node = ProcCfg.Exceptional.start_node proc_cfg in
   let compute_footprint () : exe_phase =
@@ -1006,6 +1010,7 @@ let update_summary ({InterproceduralAnalysis.tenv; update_stats} as analysis_dat
 
 (** Analyze the procedure and return the resulting summary. *)
 let analyze_proc analysis_data summary_opt proc_cfg : BiabductionSummary.t =
+  let () = print_string "analyze_proc begin\n" in
   let proc_desc = ProcCfg.Exceptional.proc_desc proc_cfg in
   reset_global_values proc_desc ;
   let go, get_results = perform_analysis_phase analysis_data proc_cfg summary_opt in
@@ -1073,6 +1078,7 @@ let perform_transition ({InterproceduralAnalysis.tenv; _} as analysis_data) proc
 
 let analyze_procedure_aux ({InterproceduralAnalysis.proc_desc; _} as analysis_data) :
     BiabductionSummary.t =
+  let () = print_string "analyze_procedure_aux begin\n" in
   let proc_name = Procdesc.get_proc_name proc_desc in
   let proc_cfg = ProcCfg.Exceptional.from_pdesc proc_desc in
   let summaryfp =
@@ -1101,6 +1107,7 @@ let analyze_procedure_aux ({InterproceduralAnalysis.proc_desc; _} as analysis_da
 let analyze_procedure ({InterproceduralAnalysis.proc_desc; err_log} as analysis_data) :
     BiabductionSummary.t option =
   (* make sure models have been registered *)
+  let () = print_string "analyze_procedure begin\n" in
   BuiltinDefn.init () ;
   try Some (analyze_procedure_aux analysis_data)
   with exn ->

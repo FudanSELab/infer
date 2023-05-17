@@ -200,7 +200,7 @@ let all_checkers =
         (let biabduction =
            dynamic_dispatch Payloads.Fields.biabduction Interproc.analyze_procedure
          in
-         [(biabduction, Clang); (biabduction, Java); (biabduction, CIL)] ) }
+         [(biabduction, Clang); (biabduction, Java); (biabduction, CIL); (biabduction, Swift)] ) }
   ; { checker= AnnotationReachability
     ; callbacks=
         (let annot_reach =

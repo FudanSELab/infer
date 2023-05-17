@@ -215,7 +215,15 @@ module NodeSet : Caml.Set.S with type elt = Node.t
 (** procedure descriptions *)
 
 (** proc description *)
-type t
+type t =
+{ mutable attributes: ProcAttributes.t  (** attributes of the procedure *)
+; mutable nodes: Node.t list  (** list of nodes of this procedure *)
+; mutable nodes_num: int  (** number of nodes *)
+; mutable start_node: Node.t  (** start node of this procedure *)
+; mutable exit_node: Node.t  (** exit node of this procedure *)
+; mutable loop_heads: NodeSet.t option  (** loop head nodes of this procedure *)
+; mutable wto: Node.t WeakTopologicalOrder.Partition.t option
+      (** weak topological order of this procedure *) }
 
 val append_locals : t -> ProcAttributes.var_data list -> unit
 (** append a list of new local variables to the existing list of local variables *)

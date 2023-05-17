@@ -1147,6 +1147,7 @@ let rec sym_exec
     | _ ->
         typ
   in
+  let () = Sil.pp_instr ~print_types:true Pp.text F.std_formatter instr in
   match instr with
   | Sil.Load {id; e= rhs_exp; typ; loc} ->
       let typ = root_type rhs_exp typ in
@@ -1218,6 +1219,7 @@ let rec sym_exec
       (*
          TODO: a draft Swift SymExec (copied from CSharp), need more attention *)
       | Swift callee_pname_swift ->
+          let () = print_string "swift callee pname" in
           let norm_prop, norm_args = normalize_params analysis_data prop_ actual_params in
           let url_handled_args = call_constructor_url_update_args callee_pname norm_args in
           let resolved_pnames =
@@ -1673,6 +1675,7 @@ and proc_call callee_pname callee_summary
 (** perform symbolic execution for a single prop, and check for junk *)
 and sym_exec_wrapper ({InterproceduralAnalysis.tenv; _} as analysis_data) handle_exn instr
     ((prop : Prop.normal Prop.t), path) : Paths.PathSet.t =
+  let () = print_string "sym_exec_wrapper begin" in
   let prop_primed_to_normal p =
     (* Rename primed vars with fresh normal vars, and return them *)
     let ids_primed =
@@ -1712,11 +1715,12 @@ and sym_exec_wrapper ({InterproceduralAnalysis.tenv; _} as analysis_data) handle
       let p' = prop_normal_to_primed fav_normal p in
       State.set_path path None ;
       (* Check for retain cycles after assignments and method calls *)
+      let () = Sil.pp_instr ~print_types:true Pp.text F.std_formatter instr in
       ( match instr with
       | (Sil.Store _ | Sil.Call _) when !BiabductionConfig.footprint ->
           RetainCycles.report_cycle analysis_data p
       | _ ->
-          () ) ;
+          print_string (string_of_bool !BiabductionConfig.footprint)) ;
       let node_has_abstraction node =
         let instr_is_abstraction = function Sil.Metadata (Abstract _) -> true | _ -> false in
         Instrs.exists ~f:instr_is_abstraction (ProcCfg.Exceptional.instrs node)
@@ -1765,6 +1769,7 @@ and sym_exec_wrapper ({InterproceduralAnalysis.tenv; _} as analysis_data) handle
 
 let node handle_exn analysis_data proc_cfg (node : ProcCfg.Exceptional.Node.t)
     (pset : Paths.PathSet.t) : Paths.PathSet.t =
+  let () = print_string "node enter\n" in
   let pname = Procdesc.get_proc_name (ProcCfg.Exceptional.proc_desc proc_cfg) in
   let exe_instr_prop instr p tr (pset1 : Paths.PathSet.t) =
     let pset2 =

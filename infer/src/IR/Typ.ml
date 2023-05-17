@@ -878,8 +878,11 @@ let rec pp_cs ~verbose f {desc} =
       CSharpClassName.pp_with_verbosity ~verbose f cs_class_name
   | Tarray {elt} ->
       F.fprintf f "%a[]" (pp_cs ~verbose) elt
-  | _ ->
-      L.die InternalError "pp_cs rec"
+  | Tstruct _ -> print_string "Tstruct"
+  | Tfun -> print_string "Tfun"
+  | TVar _ -> print_string "TVar"
+  (* | _ ->
+      L.die InternalError "pp_cs rec" *)
 
 
 let is_csharp_primitive_type {desc} =

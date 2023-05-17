@@ -6,6 +6,7 @@
  *)
 open! IStd
 module MF = MarkupFormatter
+module F = Format
 
 let desc_retain_cycle tenv (cycle : RetainCyclesType.t) =
   let open RetainCyclesType in
@@ -16,6 +17,7 @@ let desc_retain_cycle tenv (cycle : RetainCyclesType.t) =
     let from_exp_str edge_obj =
       let type_str =
         let typ_str = Typ.to_string edge_obj.rc_from.rc_node_typ in
+        (* TODO: only objc_object*)
         if String.equal typ_str "objc_object" then MF.monospaced_to_string "id"
         else MF.monospaced_to_string (Format.sprintf "%s*" typ_str)
       in
@@ -172,6 +174,7 @@ let get_cycles found_cycles root tenv prop =
       | None ->
           from_node
     in
+    let () = print_string "fields's size: "; print_int (List.length fields) ; print_string "\n"  in
     match fields with
     | [] ->
         found_cycles
@@ -182,6 +185,10 @@ let get_cycles found_cycles root tenv prop =
         let visited' = from_node.rc_node_exp :: visited in
         let found_cycles' =
           (* found root, finish the cycle *)
+          let () = edge_is_strong tenv obj_edge |> string_of_bool |> print_string ; print_string "???\n" in
+          let () = Exp.equal f_exp root_node.rc_node_exp |> string_of_bool |> print_string ; print_string "!!!\n" in
+          let () = Exp.pp F.std_formatter f_exp ; print_endline "" in
+          let () = Exp.pp F.std_formatter root_node.rc_node_exp ; print_endline "" in
           if edge_is_strong tenv obj_edge && Exp.equal f_exp root_node.rc_node_exp then
             add_cycle found_cycles (edge :: rev_path) (* we already visited f_exp, stop *)
           else if List.mem ~equal:Exp.equal visited f_exp then found_cycles
@@ -212,7 +219,7 @@ let get_cycles found_cycles root tenv prop =
   in
   match root with
   | Predicates.Hpointsto (e_root, Estruct (fl, _), Exp.Sizeof {typ= te})
-    when Predicates.is_objc_object root ->
+    (* when Predicates.is_objc_object root *) ->
       let se_root = {rc_node_exp= e_root; rc_node_typ= te} in
       (* start dfs with empty path and expr pointing to root *)
       dfs ~found_cycles ~root_node:se_root ~from_node:se_root ~rev_path:[] ~fields:fl ~visited:[]
@@ -222,7 +229,15 @@ let get_cycles found_cycles root tenv prop =
 
 (** Find all the cycles available in prop, up to a limit of 10 *)
 let get_retain_cycles tenv prop =
-  let get_retain_cycles_with_root acc_set root = get_cycles acc_set root tenv prop in
+  let () = print_endline "get_retain_cycles" in
+  let get_retain_cycles_with_root acc_set root =
+    let cycles = get_cycles acc_set root tenv prop in
+    let () =
+      print_string "cycles size: " ;
+      RetainCyclesType.Set.to_seq cycles |> Seq.length |> string_of_int |> print_string ;
+      print_string "\n" in
+    cycles
+  in
   let sigma = prop.Prop.sigma in
   try List.fold ~f:get_retain_cycles_with_root sigma ~init:RetainCyclesType.Set.empty
   with Max_retain_cycles cycles -> cycles
@@ -245,9 +260,15 @@ let exn_retain_cycle tenv cycle =
 let report_cycle {InterproceduralAnalysis.proc_desc; tenv; err_log} prop =
   (* When there is a cycle in objc we ignore it only if it's empty or it has weak or
      unsafe_unretained fields.  Otherwise we report a retain cycle. *)
+  let () = match proc_desc.attributes.proc_name with
+  | Swift proc_name -> print_endline proc_name.method_name
+  | _ -> print_endline ""
+in 
+  let () = print_string "report_cycle begin\n" in
   let cycles = get_retain_cycles tenv prop in
   RetainCyclesType.Set.iter RetainCyclesType.d_retain_cycle cycles ;
   if not (RetainCyclesType.Set.is_empty cycles) then (
+    let () = print_endline "is not empty" in
     RetainCyclesType.Set.iter
       (fun cycle ->
         let exn = exn_retain_cycle tenv cycle in
@@ -255,3 +276,5 @@ let report_cycle {InterproceduralAnalysis.proc_desc; tenv; err_log} prop =
       cycles ;
     (* we report the retain cycles above but need to raise an exception as well to stop the analysis *)
     raise (Exceptions.Analysis_stops (Localise.verbatim_desc "retain cycle found", Some __POS__)) )
+      else 
+        print_endline "is empty"

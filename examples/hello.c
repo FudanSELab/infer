@@ -7,7 +7,17 @@
 
 #include <stdlib.h>
 
-void test() {
-  int* s = NULL;
-  *s = 42;
+struct Apple {
+  int a;
+  int b;
+};
+
+struct Person {
+  struct Apple apple;
+};
+
+int main () {
+  struct Person p;
+  p.apple.a = 10;
+  return 0;
 }

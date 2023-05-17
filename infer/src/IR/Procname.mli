@@ -190,7 +190,13 @@ module Swift : sig
     | Static
   [@@deriving compare]
 
-  type t [@@deriving compare]
+  type t =
+  { method_name: string
+  ; parameters: Typ.t list
+  ; receiver_name: Typ.Name.t
+  ; return_type: Typ.t option
+  ; kind: kind }
+  [@@deriving compare, equal, yojson_of, sexp, hash]
 
   val constructor_method_name : string
 

@@ -1,0 +1,5079 @@
+{
+  "nodes": [
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 0,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 0,
+      "nd_succ_ids": [
+        2
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 1,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        2
+      ],
+      "nd_proc_id": 0,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 2,
+      "nd_instrs": [
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "",
+                "is_static": false,
+                "method_name": "main",
+                "parameters": [],
+                "return_type": "Swift.Int32"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "return"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Int32",
+            "type_kind": "Tstruct"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        0
+      ],
+      "nd_proc_id": 0,
+      "nd_succ_ids": [
+        1
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 3,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 1,
+      "nd_succ_ids": [
+        5
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 4,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        6
+      ],
+      "nd_proc_id": 1,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 5,
+      "nd_instrs": [
+        {
+          "expression": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "",
+                "is_static": false,
+                "method_name": "variable initialization expression of demoAB.A.b : Swift.Optional<demoAB.B>",
+                "parameters": [],
+                "return_type": "Swift.Optional<B>"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "__temp_variable__"
+            }
+          },
+          "identifier": {
+            "kind": "Normal",
+            "name": "n",
+            "stamp": 0
+          },
+          "instruction_kind": "Load",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<B>",
+            "type_kind": "Tstruct"
+          }
+        },
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LfieldExpression",
+            "expression": {
+              "expr_kind": "VarExpression",
+              "from_this": false,
+              "identifier": {
+                "kind": "Normal",
+                "name": "n",
+                "stamp": 0
+              }
+            },
+            "identifier": {
+              "annotation": {
+                "annotations": []
+              },
+              "field_name": "noneFlag",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+                "is_inst_return_type": false,
+                "kind": "IBool",
+                "type_kind": "Tint"
+              }
+            },
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "IBool",
+              "type_kind": "Tint"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 1
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "IBool",
+            "type_kind": "Tint"
+          }
+        },
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LfieldExpression",
+            "expression": {
+              "expr_kind": "VarExpression",
+              "from_this": false,
+              "identifier": {
+                "kind": "Normal",
+                "name": "n",
+                "stamp": 0
+              }
+            },
+            "identifier": {
+              "annotation": {
+                "annotations": []
+              },
+              "field_name": "someFlag",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+                "is_inst_return_type": false,
+                "kind": "IBool",
+                "type_kind": "Tint"
+              }
+            },
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "IBool",
+              "type_kind": "Tint"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "IBool",
+            "type_kind": "Tint"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        3
+      ],
+      "nd_proc_id": 1,
+      "nd_succ_ids": [
+        6
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Method Body",
+      "stmt_node_kind": "MethodBody"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 6,
+      "nd_instrs": [
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "",
+                "is_static": false,
+                "method_name": "variable initialization expression of demoAB.A.b : Swift.Optional<demoAB.B>",
+                "parameters": [],
+                "return_type": "Swift.Optional<B>"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "return"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<B>",
+            "type_kind": "Tstruct"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        5
+      ],
+      "nd_proc_id": 1,
+      "nd_succ_ids": [
+        4
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 7,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 4,
+      "nd_succ_ids": [
+        9
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 8,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        10
+      ],
+      "nd_proc_id": 4,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 9,
+      "nd_instrs": [
+        {
+          "expression": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.A",
+                "is_static": false,
+                "method_name": "demoAB.A.b.getter : Swift.Optional<demoAB.B>",
+                "parameters": [
+                  "self"
+                ],
+                "return_type": "Swift.Optional<B>"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "self.b"
+            }
+          },
+          "identifier": {
+            "kind": "Normal",
+            "name": "n",
+            "stamp": 0
+          },
+          "instruction_kind": "Load",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<B>",
+            "type_kind": "Tstruct"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        7
+      ],
+      "nd_proc_id": 4,
+      "nd_succ_ids": [
+        10
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Method Body",
+      "stmt_node_kind": "MethodBody"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 10,
+      "nd_instrs": [
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 9,
+            "line": 3,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.A",
+                "is_static": false,
+                "method_name": "demoAB.A.b.getter : Swift.Optional<demoAB.B>",
+                "parameters": [
+                  "self"
+                ],
+                "return_type": "Swift.Optional<B>"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "return"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<B>",
+            "type_kind": "Tstruct"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 9,
+        "line": 3,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        9
+      ],
+      "nd_proc_id": 4,
+      "nd_succ_ids": [
+        8
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 11,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 5,
+      "nd_succ_ids": [
+        13
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 12,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        14
+      ],
+      "nd_proc_id": 5,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 13,
+      "nd_instrs": [
+        {
+          "expression": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.A",
+                "is_static": false,
+                "method_name": "demoAB.A.b.setter : Swift.Optional<demoAB.B>",
+                "parameters": [
+                  "value",
+                  "self"
+                ],
+                "return_type": "Swift.Void"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "self.b"
+            }
+          },
+          "identifier": {
+            "kind": "Normal",
+            "name": "n",
+            "stamp": 0
+          },
+          "instruction_kind": "Load",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<B>",
+            "type_kind": "Tstruct"
+          }
+        },
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.A",
+                "is_static": false,
+                "method_name": "demoAB.A.b.setter : Swift.Optional<demoAB.B>",
+                "parameters": [
+                  "value",
+                  "self"
+                ],
+                "return_type": "Swift.Void"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "self.b"
+            }
+          },
+          "rvalue": {
+            "expr_kind": "VarExpression",
+            "from_this": false,
+            "identifier": {
+              "kind": "None",
+              "name": "",
+              "stamp": 0
+            }
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<B>",
+            "type_kind": "Tstruct"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        11
+      ],
+      "nd_proc_id": 5,
+      "nd_succ_ids": [
+        14
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Method Body",
+      "stmt_node_kind": "MethodBody"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 14,
+      "nd_instrs": [],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 9,
+        "line": 3,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        13
+      ],
+      "nd_proc_id": 5,
+      "nd_succ_ids": [
+        12
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 15,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 6,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 16,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        17
+      ],
+      "nd_proc_id": 6,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 17,
+      "nd_instrs": [],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 9,
+        "line": 3,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 6,
+      "nd_succ_ids": [
+        16
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 18,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 2,
+      "nd_succ_ids": [
+        20
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 19,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        20
+      ],
+      "nd_proc_id": 2,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 20,
+      "nd_instrs": [
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 7,
+            "line": 2,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.A",
+                "is_static": false,
+                "method_name": "demoAB.A.deinit",
+                "parameters": [
+                  "self"
+                ],
+                "return_type": "Swift.Builtin.NativeObject"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "return"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "IInt",
+            "type_kind": "Tint"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 7,
+        "line": 2,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        18
+      ],
+      "nd_proc_id": 2,
+      "nd_succ_ids": [
+        19
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 21,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 3,
+      "nd_succ_ids": [
+        23
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 22,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        24
+      ],
+      "nd_proc_id": 3,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 23,
+      "nd_instrs": [
+        {
+          "args": [
+            {
+              "expression": {
+                "expr_kind": "LvarExpression",
+                "pvar": {
+                  "proc_name": {
+                    "class_name": "file.A",
+                    "is_static": false,
+                    "method_name": "demoAB.A.__deallocating_deinit",
+                    "parameters": [
+                      "self"
+                    ],
+                    "return_type": "Swift.Void"
+                  },
+                  "pv_kind": "LocalVariable",
+                  "pv_name": "self"
+                }
+              },
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+                "is_inst_return_type": false,
+                "kind": "Pk_pointer",
+                "type": {
+                  "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                  "is_inst_return_type": false,
+                  "struct_name": "file.A",
+                  "type_kind": "Tstruct"
+                },
+                "type_kind": "Tptr"
+              }
+            }
+          ],
+          "flags": {
+            "cf_is_objc_block": false,
+            "cf_noreturn": false,
+            "cf_virtual": false
+          },
+          "function_expression": {
+            "const_value": {
+              "class_name": "file.A",
+              "is_static": false,
+              "method_name": "demoAB.A.deinit",
+              "parameters": [
+                "self"
+              ],
+              "return_type": "Swift.Builtin.NativeObject"
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Fun"
+          },
+          "instruction_kind": "Call",
+          "location": {
+            "col": 7,
+            "line": 2,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "return_type": {
+            "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "IInt",
+            "type_kind": "Tint"
+          },
+          "return_var": {
+            "kind": "Normal",
+            "name": "n",
+            "stamp": 0
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 7,
+        "line": 2,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        21
+      ],
+      "nd_proc_id": 3,
+      "nd_succ_ids": [
+        24
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Call demoAB.A.deinit",
+      "stmt_node_kind": "Call"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 24,
+      "nd_instrs": [],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 7,
+        "line": 2,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        23
+      ],
+      "nd_proc_id": 3,
+      "nd_succ_ids": [
+        22
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 25,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 7,
+      "nd_succ_ids": [
+        27
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 26,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        28
+      ],
+      "nd_proc_id": 7,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 27,
+      "nd_instrs": [
+        {
+          "args": [
+            {
+              "expression": {
+                "expr_kind": "VarExpression",
+                "from_this": false,
+                "identifier": {
+                  "kind": "Normal",
+                  "name": "n",
+                  "stamp": 0
+                }
+              },
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+                "is_inst_return_type": false,
+                "kind": "Pk_pointer",
+                "type": {
+                  "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                  "is_inst_return_type": false,
+                  "struct_name": "file.A",
+                  "type_kind": "Tstruct"
+                },
+                "type_kind": "Tptr"
+              }
+            }
+          ],
+          "flags": {
+            "cf_is_objc_block": false,
+            "cf_noreturn": false,
+            "cf_virtual": false
+          },
+          "function_expression": {
+            "const_value": {
+              "class_name": "file.A",
+              "is_static": false,
+              "method_name": "demoAB.A.init() -> demoAB.A",
+              "parameters": [
+                "self"
+              ],
+              "return_type": "file.A"
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Fun"
+          },
+          "instruction_kind": "Call",
+          "location": {
+            "col": 7,
+            "line": 2,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "return_type": {
+            "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "Pk_pointer",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+              "is_inst_return_type": false,
+              "struct_name": "file.A",
+              "type_kind": "Tstruct"
+            },
+            "type_kind": "Tptr"
+          },
+          "return_var": {
+            "kind": "Normal",
+            "name": "n",
+            "stamp": 1
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 7,
+        "line": 2,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        25
+      ],
+      "nd_proc_id": 7,
+      "nd_succ_ids": [
+        28
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Call demoAB.A.init() -> demoAB.A",
+      "stmt_node_kind": "Call"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 28,
+      "nd_instrs": [
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 7,
+            "line": 2,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "@thick A.Type",
+                "is_static": false,
+                "method_name": "demoAB.A.__allocating_init() -> demoAB.A",
+                "parameters": [
+                  "$metatype"
+                ],
+                "return_type": "file.A"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "return"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "Pk_pointer",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+              "is_inst_return_type": false,
+              "struct_name": "file.A",
+              "type_kind": "Tstruct"
+            },
+            "type_kind": "Tptr"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 7,
+        "line": 2,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        27
+      ],
+      "nd_proc_id": 7,
+      "nd_succ_ids": [
+        26
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 29,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 16,
+      "nd_succ_ids": [
+        31
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 30,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        32
+      ],
+      "nd_proc_id": 16,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 31,
+      "nd_instrs": [
+        {
+          "expression": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.A",
+                "is_static": false,
+                "method_name": "demoAB.A.init() -> demoAB.A",
+                "parameters": [
+                  "self"
+                ],
+                "return_type": "file.A"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "__temp_variable__"
+            }
+          },
+          "identifier": {
+            "kind": "Normal",
+            "name": "n",
+            "stamp": 0
+          },
+          "instruction_kind": "Load",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<B>",
+            "type_kind": "Tstruct"
+          }
+        },
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LfieldExpression",
+            "expression": {
+              "expr_kind": "VarExpression",
+              "from_this": false,
+              "identifier": {
+                "kind": "Normal",
+                "name": "n",
+                "stamp": 0
+              }
+            },
+            "identifier": {
+              "annotation": {
+                "annotations": []
+              },
+              "field_name": "noneFlag",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+                "is_inst_return_type": false,
+                "kind": "IBool",
+                "type_kind": "Tint"
+              }
+            },
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "IBool",
+              "type_kind": "Tint"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 1
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "IBool",
+            "type_kind": "Tint"
+          }
+        },
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LfieldExpression",
+            "expression": {
+              "expr_kind": "VarExpression",
+              "from_this": false,
+              "identifier": {
+                "kind": "Normal",
+                "name": "n",
+                "stamp": 0
+              }
+            },
+            "identifier": {
+              "annotation": {
+                "annotations": []
+              },
+              "field_name": "someFlag",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+                "is_inst_return_type": false,
+                "kind": "IBool",
+                "type_kind": "Tint"
+              }
+            },
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "IBool",
+              "type_kind": "Tint"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "IBool",
+            "type_kind": "Tint"
+          }
+        },
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.A",
+                "is_static": false,
+                "method_name": "demoAB.A.init() -> demoAB.A",
+                "parameters": [
+                  "self"
+                ],
+                "return_type": "file.A"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "self.b"
+            }
+          },
+          "rvalue": {
+            "expr_kind": "VarExpression",
+            "from_this": false,
+            "identifier": {
+              "kind": "Normal",
+              "name": "n",
+              "stamp": 0
+            }
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<B>",
+            "type_kind": "Tstruct"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        29
+      ],
+      "nd_proc_id": 16,
+      "nd_succ_ids": [
+        32
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Method Body",
+      "stmt_node_kind": "MethodBody"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 32,
+      "nd_instrs": [
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 7,
+            "line": 2,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.A",
+                "is_static": false,
+                "method_name": "demoAB.A.init() -> demoAB.A",
+                "parameters": [
+                  "self"
+                ],
+                "return_type": "file.A"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "return"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "Pk_pointer",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+              "is_inst_return_type": false,
+              "struct_name": "file.A",
+              "type_kind": "Tstruct"
+            },
+            "type_kind": "Tptr"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 7,
+        "line": 2,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        31
+      ],
+      "nd_proc_id": 16,
+      "nd_succ_ids": [
+        30
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 33,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 8,
+      "nd_succ_ids": [
+        35
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 34,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        36
+      ],
+      "nd_proc_id": 8,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 35,
+      "nd_instrs": [
+        {
+          "expression": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "",
+                "is_static": false,
+                "method_name": "variable initialization expression of demoAB.B.a : Swift.Optional<demoAB.A>",
+                "parameters": [],
+                "return_type": "Swift.Optional<A>"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "__temp_variable__"
+            }
+          },
+          "identifier": {
+            "kind": "Normal",
+            "name": "n",
+            "stamp": 0
+          },
+          "instruction_kind": "Load",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<A>",
+            "type_kind": "Tstruct"
+          }
+        },
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LfieldExpression",
+            "expression": {
+              "expr_kind": "VarExpression",
+              "from_this": false,
+              "identifier": {
+                "kind": "Normal",
+                "name": "n",
+                "stamp": 0
+              }
+            },
+            "identifier": {
+              "annotation": {
+                "annotations": []
+              },
+              "field_name": "noneFlag",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+                "is_inst_return_type": false,
+                "kind": "IBool",
+                "type_kind": "Tint"
+              }
+            },
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "IBool",
+              "type_kind": "Tint"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 1
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "IBool",
+            "type_kind": "Tint"
+          }
+        },
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LfieldExpression",
+            "expression": {
+              "expr_kind": "VarExpression",
+              "from_this": false,
+              "identifier": {
+                "kind": "Normal",
+                "name": "n",
+                "stamp": 0
+              }
+            },
+            "identifier": {
+              "annotation": {
+                "annotations": []
+              },
+              "field_name": "someFlag",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+                "is_inst_return_type": false,
+                "kind": "IBool",
+                "type_kind": "Tint"
+              }
+            },
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "IBool",
+              "type_kind": "Tint"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "IBool",
+            "type_kind": "Tint"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        33
+      ],
+      "nd_proc_id": 8,
+      "nd_succ_ids": [
+        36
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Method Body",
+      "stmt_node_kind": "MethodBody"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 36,
+      "nd_instrs": [
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "",
+                "is_static": false,
+                "method_name": "variable initialization expression of demoAB.B.a : Swift.Optional<demoAB.A>",
+                "parameters": [],
+                "return_type": "Swift.Optional<A>"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "return"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<A>",
+            "type_kind": "Tstruct"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        35
+      ],
+      "nd_proc_id": 8,
+      "nd_succ_ids": [
+        34
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 37,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 11,
+      "nd_succ_ids": [
+        39
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 38,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        40
+      ],
+      "nd_proc_id": 11,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 39,
+      "nd_instrs": [
+        {
+          "expression": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.B",
+                "is_static": false,
+                "method_name": "demoAB.B.a.getter : Swift.Optional<demoAB.A>",
+                "parameters": [
+                  "self"
+                ],
+                "return_type": "Swift.Optional<A>"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "self.a"
+            }
+          },
+          "identifier": {
+            "kind": "Normal",
+            "name": "n",
+            "stamp": 0
+          },
+          "instruction_kind": "Load",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<A>",
+            "type_kind": "Tstruct"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        37
+      ],
+      "nd_proc_id": 11,
+      "nd_succ_ids": [
+        40
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Method Body",
+      "stmt_node_kind": "MethodBody"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 40,
+      "nd_instrs": [
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 9,
+            "line": 7,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.B",
+                "is_static": false,
+                "method_name": "demoAB.B.a.getter : Swift.Optional<demoAB.A>",
+                "parameters": [
+                  "self"
+                ],
+                "return_type": "Swift.Optional<A>"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "return"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<A>",
+            "type_kind": "Tstruct"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 9,
+        "line": 7,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        39
+      ],
+      "nd_proc_id": 11,
+      "nd_succ_ids": [
+        38
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 41,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 12,
+      "nd_succ_ids": [
+        43
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 42,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        44
+      ],
+      "nd_proc_id": 12,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 43,
+      "nd_instrs": [
+        {
+          "expression": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.B",
+                "is_static": false,
+                "method_name": "demoAB.B.a.setter : Swift.Optional<demoAB.A>",
+                "parameters": [
+                  "value",
+                  "self"
+                ],
+                "return_type": "Swift.Void"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "self.a"
+            }
+          },
+          "identifier": {
+            "kind": "Normal",
+            "name": "n",
+            "stamp": 0
+          },
+          "instruction_kind": "Load",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<A>",
+            "type_kind": "Tstruct"
+          }
+        },
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.B",
+                "is_static": false,
+                "method_name": "demoAB.B.a.setter : Swift.Optional<demoAB.A>",
+                "parameters": [
+                  "value",
+                  "self"
+                ],
+                "return_type": "Swift.Void"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "self.a"
+            }
+          },
+          "rvalue": {
+            "expr_kind": "VarExpression",
+            "from_this": false,
+            "identifier": {
+              "kind": "None",
+              "name": "",
+              "stamp": 0
+            }
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<A>",
+            "type_kind": "Tstruct"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        41
+      ],
+      "nd_proc_id": 12,
+      "nd_succ_ids": [
+        44
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Method Body",
+      "stmt_node_kind": "MethodBody"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 44,
+      "nd_instrs": [],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 9,
+        "line": 7,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        43
+      ],
+      "nd_proc_id": 12,
+      "nd_succ_ids": [
+        42
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 45,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 13,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 46,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        47
+      ],
+      "nd_proc_id": 13,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 47,
+      "nd_instrs": [],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 9,
+        "line": 7,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 13,
+      "nd_succ_ids": [
+        46
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 48,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 9,
+      "nd_succ_ids": [
+        50
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 49,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        50
+      ],
+      "nd_proc_id": 9,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 50,
+      "nd_instrs": [
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 7,
+            "line": 6,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.B",
+                "is_static": false,
+                "method_name": "demoAB.B.deinit",
+                "parameters": [
+                  "self"
+                ],
+                "return_type": "Swift.Builtin.NativeObject"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "return"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "IInt",
+            "type_kind": "Tint"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 7,
+        "line": 6,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        48
+      ],
+      "nd_proc_id": 9,
+      "nd_succ_ids": [
+        49
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 51,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 10,
+      "nd_succ_ids": [
+        53
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 52,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        54
+      ],
+      "nd_proc_id": 10,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 53,
+      "nd_instrs": [
+        {
+          "args": [
+            {
+              "expression": {
+                "expr_kind": "LvarExpression",
+                "pvar": {
+                  "proc_name": {
+                    "class_name": "file.B",
+                    "is_static": false,
+                    "method_name": "demoAB.B.__deallocating_deinit",
+                    "parameters": [
+                      "self"
+                    ],
+                    "return_type": "Swift.Void"
+                  },
+                  "pv_kind": "LocalVariable",
+                  "pv_name": "self"
+                }
+              },
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+                "is_inst_return_type": false,
+                "kind": "Pk_pointer",
+                "type": {
+                  "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                  "is_inst_return_type": false,
+                  "struct_name": "file.B",
+                  "type_kind": "Tstruct"
+                },
+                "type_kind": "Tptr"
+              }
+            }
+          ],
+          "flags": {
+            "cf_is_objc_block": false,
+            "cf_noreturn": false,
+            "cf_virtual": false
+          },
+          "function_expression": {
+            "const_value": {
+              "class_name": "file.B",
+              "is_static": false,
+              "method_name": "demoAB.B.deinit",
+              "parameters": [
+                "self"
+              ],
+              "return_type": "Swift.Builtin.NativeObject"
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Fun"
+          },
+          "instruction_kind": "Call",
+          "location": {
+            "col": 7,
+            "line": 6,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "return_type": {
+            "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "IInt",
+            "type_kind": "Tint"
+          },
+          "return_var": {
+            "kind": "Normal",
+            "name": "n",
+            "stamp": 0
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 7,
+        "line": 6,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        51
+      ],
+      "nd_proc_id": 10,
+      "nd_succ_ids": [
+        54
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Call demoAB.B.deinit",
+      "stmt_node_kind": "Call"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 54,
+      "nd_instrs": [],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 7,
+        "line": 6,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        53
+      ],
+      "nd_proc_id": 10,
+      "nd_succ_ids": [
+        52
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 55,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 14,
+      "nd_succ_ids": [
+        57
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 56,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        58
+      ],
+      "nd_proc_id": 14,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 57,
+      "nd_instrs": [
+        {
+          "args": [
+            {
+              "expression": {
+                "expr_kind": "VarExpression",
+                "from_this": false,
+                "identifier": {
+                  "kind": "Normal",
+                  "name": "n",
+                  "stamp": 0
+                }
+              },
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+                "is_inst_return_type": false,
+                "kind": "Pk_pointer",
+                "type": {
+                  "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                  "is_inst_return_type": false,
+                  "struct_name": "file.B",
+                  "type_kind": "Tstruct"
+                },
+                "type_kind": "Tptr"
+              }
+            }
+          ],
+          "flags": {
+            "cf_is_objc_block": false,
+            "cf_noreturn": false,
+            "cf_virtual": false
+          },
+          "function_expression": {
+            "const_value": {
+              "class_name": "file.B",
+              "is_static": false,
+              "method_name": "demoAB.B.init() -> demoAB.B",
+              "parameters": [
+                "self"
+              ],
+              "return_type": "file.B"
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Fun"
+          },
+          "instruction_kind": "Call",
+          "location": {
+            "col": 7,
+            "line": 6,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "return_type": {
+            "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "Pk_pointer",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+              "is_inst_return_type": false,
+              "struct_name": "file.B",
+              "type_kind": "Tstruct"
+            },
+            "type_kind": "Tptr"
+          },
+          "return_var": {
+            "kind": "Normal",
+            "name": "n",
+            "stamp": 1
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 7,
+        "line": 6,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        55
+      ],
+      "nd_proc_id": 14,
+      "nd_succ_ids": [
+        58
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Call demoAB.B.init() -> demoAB.B",
+      "stmt_node_kind": "Call"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 58,
+      "nd_instrs": [
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 7,
+            "line": 6,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "@thick B.Type",
+                "is_static": false,
+                "method_name": "demoAB.B.__allocating_init() -> demoAB.B",
+                "parameters": [
+                  "$metatype"
+                ],
+                "return_type": "file.B"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "return"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "Pk_pointer",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+              "is_inst_return_type": false,
+              "struct_name": "file.B",
+              "type_kind": "Tstruct"
+            },
+            "type_kind": "Tptr"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 7,
+        "line": 6,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        57
+      ],
+      "nd_proc_id": 14,
+      "nd_succ_ids": [
+        56
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 59,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 17,
+      "nd_succ_ids": [
+        61
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 60,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        62
+      ],
+      "nd_proc_id": 17,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 61,
+      "nd_instrs": [
+        {
+          "expression": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.B",
+                "is_static": false,
+                "method_name": "demoAB.B.init() -> demoAB.B",
+                "parameters": [
+                  "self"
+                ],
+                "return_type": "file.B"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "__temp_variable__"
+            }
+          },
+          "identifier": {
+            "kind": "Normal",
+            "name": "n",
+            "stamp": 0
+          },
+          "instruction_kind": "Load",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<A>",
+            "type_kind": "Tstruct"
+          }
+        },
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LfieldExpression",
+            "expression": {
+              "expr_kind": "VarExpression",
+              "from_this": false,
+              "identifier": {
+                "kind": "Normal",
+                "name": "n",
+                "stamp": 0
+              }
+            },
+            "identifier": {
+              "annotation": {
+                "annotations": []
+              },
+              "field_name": "noneFlag",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+                "is_inst_return_type": false,
+                "kind": "IBool",
+                "type_kind": "Tint"
+              }
+            },
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "IBool",
+              "type_kind": "Tint"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 1
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "IBool",
+            "type_kind": "Tint"
+          }
+        },
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LfieldExpression",
+            "expression": {
+              "expr_kind": "VarExpression",
+              "from_this": false,
+              "identifier": {
+                "kind": "Normal",
+                "name": "n",
+                "stamp": 0
+              }
+            },
+            "identifier": {
+              "annotation": {
+                "annotations": []
+              },
+              "field_name": "someFlag",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+                "is_inst_return_type": false,
+                "kind": "IBool",
+                "type_kind": "Tint"
+              }
+            },
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "IBool",
+              "type_kind": "Tint"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "IBool",
+            "type_kind": "Tint"
+          }
+        },
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 0,
+            "line": 0,
+            "source_file": {
+              "path": "",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.B",
+                "is_static": false,
+                "method_name": "demoAB.B.init() -> demoAB.B",
+                "parameters": [
+                  "self"
+                ],
+                "return_type": "file.B"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "self.a"
+            }
+          },
+          "rvalue": {
+            "expr_kind": "VarExpression",
+            "from_this": false,
+            "identifier": {
+              "kind": "Normal",
+              "name": "n",
+              "stamp": 0
+            }
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "Swift.Optional<A>",
+            "type_kind": "Tstruct"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        59
+      ],
+      "nd_proc_id": 17,
+      "nd_succ_ids": [
+        62
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Method Body",
+      "stmt_node_kind": "MethodBody"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 62,
+      "nd_instrs": [
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 7,
+            "line": 6,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LvarExpression",
+            "pvar": {
+              "proc_name": {
+                "class_name": "file.B",
+                "is_static": false,
+                "method_name": "demoAB.B.init() -> demoAB.B",
+                "parameters": [
+                  "self"
+                ],
+                "return_type": "file.B"
+              },
+              "pv_kind": "LocalVariable",
+              "pv_name": "return"
+            }
+          },
+          "rvalue": {
+            "const_value": {
+              "is_pointer": false,
+              "unsigned": false,
+              "value": 0
+            },
+            "expr_kind": "ConstExpression",
+            "kind": "Int"
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "Pk_pointer",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+              "is_inst_return_type": false,
+              "struct_name": "file.B",
+              "type_kind": "Tstruct"
+            },
+            "type_kind": "Tptr"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 7,
+        "line": 6,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        61
+      ],
+      "nd_proc_id": 17,
+      "nd_succ_ids": [
+        60
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 63,
+      "nd_instrs": [],
+      "nd_kind": "StartNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [],
+      "nd_proc_id": 15,
+      "nd_succ_ids": [
+        65
+      ],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 64,
+      "nd_instrs": [],
+      "nd_kind": "ExitNode",
+      "nd_loc": {
+        "col": 0,
+        "line": 0,
+        "source_file": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "nd_pred_ids": [
+        68
+      ],
+      "nd_proc_id": 15,
+      "nd_succ_ids": [],
+      "nd_temps": []
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 65,
+      "nd_instrs": [
+        {
+          "args": [
+            {
+              "expression": {
+                "type": {
+                  "is_inst_return_type": false,
+                  "struct_name": "file.A",
+                  "type_kind": "Tstruct"
+                },
+                "kind": "exact",
+                "dynamic_length": null,
+                "number_bytes": null,
+                "expr_kind": "SizeofExpression"
+              },
+              "type": {
+                "is_inst_return_type": false,
+                "kind": "Pk_pointer",
+                "type": {
+                  "is_inst_return_type": false,
+                  "struct_name": "file.A",
+                  "type_kind": "Tstruct"
+                },
+                "type_kind": "Tptr"
+              }
+            }
+          ],
+          "flags": {
+            "cf_is_objc_block": false,
+            "cf_noreturn": false,
+            "cf_virtual": false
+          },
+          "function_expression": {
+            "const_value": {
+              "method_name": "__new",
+              "parameters": [],
+              "class_name": "BuiltIn",
+              "return_type": "",
+              "is_static": true
+            },
+            "kind": "Fun",
+            "expr_kind": "ConstExpression"
+          },
+          "instruction_kind": "Call",
+          "location": {
+            "col": 13,
+            "line": 15,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "return_type": {
+            "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "Pk_pointer",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+              "is_inst_return_type": false,
+              "struct_name": "file.A",
+              "type_kind": "Tstruct"
+            },
+            "type_kind": "Tptr"
+          },
+          "return_var": {
+            "kind": "Normal",
+            "name": "n",
+            "stamp": 1
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 13,
+        "line": 15,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        63
+      ],
+      "nd_proc_id": 15,
+      "nd_succ_ids": [
+        66
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Call demoAB.A.__allocating_init() -> demoAB.A",
+      "stmt_node_kind": "Call"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 66,
+      "nd_instrs": [
+        {
+          "args": [
+            {
+              "expression": {
+                "type": {
+                  "is_inst_return_type": false,
+                  "struct_name": "file.B",
+                  "type_kind": "Tstruct"
+                },
+                "kind": "exact",
+                "dynamic_length": null,
+                "number_bytes": null,
+                "expr_kind": "SizeofExpression"
+              },
+              "type": {
+                "is_inst_return_type": false,
+                "kind": "Pk_pointer",
+                "type": {
+                  "is_inst_return_type": false,
+                  "struct_name": "file.B",
+                  "type_kind": "Tstruct"
+                },
+                "type_kind": "Tptr"
+              }
+            }
+          ],
+          "flags": {
+            "cf_is_objc_block": false,
+            "cf_noreturn": false,
+            "cf_virtual": false
+          },
+          "function_expression": {
+            "const_value": {
+              "method_name": "__new",
+              "parameters": [],
+              "class_name": "BuiltIn",
+              "return_type": "",
+              "is_static": true
+            },
+            "kind": "Fun",
+            "expr_kind": "ConstExpression"
+          },
+          "instruction_kind": "Call",
+          "location": {
+            "col": 13,
+            "line": 16,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "return_type": {
+            "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "Pk_pointer",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+              "is_inst_return_type": false,
+              "struct_name": "file.B",
+              "type_kind": "Tstruct"
+            },
+            "type_kind": "Tptr"
+          },
+          "return_var": {
+            "kind": "Normal",
+            "name": "n",
+            "stamp": 3
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 13,
+        "line": 16,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        65
+      ],
+      "nd_proc_id": 15,
+      "nd_succ_ids": [
+        67
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Call demoAB.B.__allocating_init() -> demoAB.B",
+      "stmt_node_kind": "Call"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 67,
+      "nd_instrs": [
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 11,
+            "line": 18,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LfieldExpression",
+            "expression": {
+              "expr_kind": "LfieldExpression",
+              "expression": {
+                "expr_kind": "VarExpression",
+                "from_this": false,
+                "identifier": {
+                  "kind": "Normal",
+                  "name": "n",
+                  "stamp": 1
+                }
+              },
+              "identifier": {
+                "annotation": {
+                  "annotations": []
+                },
+                "field_name": "b",
+                "type": {
+                  "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                  "is_inst_return_type": false,
+                  "struct_name": "Swift.Optional<B>",
+                  "type_kind": "Tstruct"
+                }
+              },
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "Swift.Optional<B>",
+                "type_kind": "Tstruct"
+              }
+            },
+            "identifier": {
+              "annotation": {
+                "annotations": []
+              },
+              "field_name": "someStorage",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+                "is_inst_return_type": false,
+                "kind": "Pk_pointer",
+                "type": {
+                  "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                  "is_inst_return_type": false,
+                  "struct_name": "file.B",
+                  "type_kind": "Tstruct"
+                },
+                "type_kind": "Tptr"
+              }
+            },
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "Pk_pointer",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "file.B",
+                "type_kind": "Tstruct"
+              },
+              "type_kind": "Tptr"
+            }
+          },
+          "rvalue": {
+            "expr_kind": "VarExpression",
+            "from_this": false,
+            "identifier": {
+              "kind": "Normal",
+              "name": "n",
+              "stamp": 3
+            }
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "Pk_pointer",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+              "is_inst_return_type": false,
+              "struct_name": "file.B",
+              "type_kind": "Tstruct"
+            },
+            "type_kind": "Tptr"
+          }
+        },
+        {
+          "instruction_kind": "Store",
+          "location": {
+            "col": 11,
+            "line": 18,
+            "source_file": {
+              "path": "./tmp/demoAB.swift",
+              "path_type": "Relative"
+            }
+          },
+          "lvalue": {
+            "expr_kind": "LfieldExpression",
+            "expression": {
+              "expr_kind": "LfieldExpression",
+              "expression": {
+                "expr_kind": "VarExpression",
+                "from_this": false,
+                "identifier": {
+                  "kind": "Normal",
+                  "name": "n",
+                  "stamp": 3
+                }
+              },
+              "identifier": {
+                "annotation": {
+                  "annotations": []
+                },
+                "field_name": "a",
+                "type": {
+                  "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                  "is_inst_return_type": false,
+                  "struct_name": "Swift.Optional<A>",
+                  "type_kind": "Tstruct"
+                }
+              },
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "Swift.Optional<A>",
+                "type_kind": "Tstruct"
+              }
+            },
+            "identifier": {
+              "annotation": {
+                "annotations": []
+              },
+              "field_name": "someStorage",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+                "is_inst_return_type": false,
+                "kind": "Pk_pointer",
+                "type": {
+                  "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                  "is_inst_return_type": false,
+                  "struct_name": "file.A",
+                  "type_kind": "Tstruct"
+                },
+                "type_kind": "Tptr"
+              }
+            },
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "Pk_pointer",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "file.A",
+                "type_kind": "Tstruct"
+              },
+              "type_kind": "Tptr"
+            }
+          },
+          "rvalue": {
+            "expr_kind": "VarExpression",
+            "from_this": false,
+            "identifier": {
+              "kind": "Normal",
+              "name": "n",
+              "stamp": 1
+            }
+          },
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+            "is_inst_return_type": false,
+            "kind": "Pk_pointer",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+              "is_inst_return_type": false,
+              "struct_name": "file.A",
+              "type_kind": "Tstruct"
+            },
+            "type_kind": "Tptr"
+          }
+        }
+      ],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 11,
+        "line": 18,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        66
+      ],
+      "nd_proc_id": 15,
+      "nd_succ_ids": [
+        68
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Method Body",
+      "stmt_node_kind": "MethodBody"
+    },
+    {
+      "nd_dead_pvars_after": [],
+      "nd_dead_pvars_before": [],
+      "nd_exn_ids": [],
+      "nd_id": 68,
+      "nd_instrs": [],
+      "nd_kind": "StatementNode",
+      "nd_loc": {
+        "col": 1,
+        "line": 20,
+        "source_file": {
+          "path": "./tmp/demoAB.swift",
+          "path_type": "Relative"
+        }
+      },
+      "nd_pred_ids": [
+        67
+      ],
+      "nd_proc_id": 15,
+      "nd_succ_ids": [
+        64
+      ],
+      "nd_temps": [],
+      "stmt_node_comment": "Return Stmt",
+      "stmt_node_kind": "ReturnStmt"
+    }
+  ],
+  "priority_set": [],
+  "procs": {
+    "demoAB.A.__allocating_init() -> demoAB.A": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [
+          {
+            "name": "$metatype",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "IInt",
+              "type_kind": "Tint"
+            }
+          }
+        ],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 7,
+          "line": 2,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "@thick A.Type",
+          "is_static": false,
+          "method_name": "demoAB.A.__allocating_init() -> demoAB.A",
+          "parameters": [
+            "$metatype"
+          ],
+          "return_type": "file.A"
+        },
+        "ret_type": {
+          "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+          "is_inst_return_type": false,
+          "kind": "Pk_pointer",
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "file.A",
+            "type_kind": "Tstruct"
+          },
+          "type_kind": "Tptr"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 26,
+      "pd_exn_node": 0,
+      "pd_id": 7,
+      "pd_nodes": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "pd_start_node": 25
+    },
+    "demoAB.A.__deallocating_deinit": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [
+          {
+            "name": "self",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "Pk_pointer",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "file.A",
+                "type_kind": "Tstruct"
+              },
+              "type_kind": "Tptr"
+            }
+          }
+        ],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 7,
+          "line": 2,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "file.A",
+          "is_static": false,
+          "method_name": "demoAB.A.__deallocating_deinit",
+          "parameters": [
+            "self"
+          ],
+          "return_type": "Swift.Void"
+        },
+        "ret_type": {
+          "$type": "",
+          "is_inst_return_type": false,
+          "type_kind": "Tvoid"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 22,
+      "pd_exn_node": 0,
+      "pd_id": 3,
+      "pd_nodes": [
+        21,
+        22,
+        23,
+        24
+      ],
+      "pd_start_node": 21
+    },
+    "demoAB.A.b.getter : Swift.Optional<demoAB.B>": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [
+          {
+            "name": "self",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "Pk_pointer",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "file.A",
+                "type_kind": "Tstruct"
+              },
+              "type_kind": "Tptr"
+            }
+          }
+        ],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 9,
+          "line": 3,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "file.A",
+          "is_static": false,
+          "method_name": "demoAB.A.b.getter : Swift.Optional<demoAB.B>",
+          "parameters": [
+            "self"
+          ],
+          "return_type": "Swift.Optional<B>"
+        },
+        "ret_type": {
+          "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+          "is_inst_return_type": false,
+          "struct_name": "Swift.Optional<B>",
+          "type_kind": "Tstruct"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 8,
+      "pd_exn_node": 0,
+      "pd_id": 4,
+      "pd_nodes": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "pd_start_node": 7
+    },
+    "demoAB.A.b.modify : Swift.Optional<demoAB.B>": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [
+          {
+            "name": "self",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "Pk_pointer",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "file.A",
+                "type_kind": "Tstruct"
+              },
+              "type_kind": "Tptr"
+            }
+          }
+        ],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 9,
+          "line": 3,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "file.A",
+          "is_static": false,
+          "method_name": "demoAB.A.b.modify : Swift.Optional<demoAB.B>",
+          "parameters": [
+            "self"
+          ],
+          "return_type": "Swift.Void"
+        },
+        "ret_type": {
+          "$type": "",
+          "is_inst_return_type": false,
+          "type_kind": "Tvoid"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 16,
+      "pd_exn_node": 0,
+      "pd_id": 6,
+      "pd_nodes": [
+        15,
+        16,
+        17
+      ],
+      "pd_start_node": 15
+    },
+    "demoAB.A.b.setter : Swift.Optional<demoAB.B>": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [
+          {
+            "name": "value",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+              "is_inst_return_type": false,
+              "struct_name": "Swift.Optional<B>",
+              "type_kind": "Tstruct"
+            }
+          },
+          {
+            "name": "self",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "Pk_pointer",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "file.A",
+                "type_kind": "Tstruct"
+              },
+              "type_kind": "Tptr"
+            }
+          }
+        ],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 9,
+          "line": 3,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "file.A",
+          "is_static": false,
+          "method_name": "demoAB.A.b.setter : Swift.Optional<demoAB.B>",
+          "parameters": [
+            "value",
+            "self"
+          ],
+          "return_type": "Swift.Void"
+        },
+        "ret_type": {
+          "$type": "",
+          "is_inst_return_type": false,
+          "type_kind": "Tvoid"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 12,
+      "pd_exn_node": 0,
+      "pd_id": 5,
+      "pd_nodes": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "pd_start_node": 11
+    },
+    "demoAB.A.deinit": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [
+          {
+            "name": "self",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "Pk_pointer",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "file.A",
+                "type_kind": "Tstruct"
+              },
+              "type_kind": "Tptr"
+            }
+          }
+        ],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 7,
+          "line": 2,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "file.A",
+          "is_static": false,
+          "method_name": "demoAB.A.deinit",
+          "parameters": [
+            "self"
+          ],
+          "return_type": "Swift.Builtin.NativeObject"
+        },
+        "ret_type": {
+          "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+          "is_inst_return_type": false,
+          "kind": "IInt",
+          "type_kind": "Tint"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 19,
+      "pd_exn_node": 0,
+      "pd_id": 2,
+      "pd_nodes": [
+        18,
+        19,
+        20
+      ],
+      "pd_start_node": 18
+    },
+    "demoAB.A.init() -> demoAB.A": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [
+          {
+            "name": "self",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "Pk_pointer",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "file.A",
+                "type_kind": "Tstruct"
+              },
+              "type_kind": "Tptr"
+            }
+          }
+        ],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 7,
+          "line": 2,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "file.A",
+          "is_static": false,
+          "method_name": "demoAB.A.init() -> demoAB.A",
+          "parameters": [
+            "self"
+          ],
+          "return_type": "file.A"
+        },
+        "ret_type": {
+          "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+          "is_inst_return_type": false,
+          "kind": "Pk_pointer",
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "file.A",
+            "type_kind": "Tstruct"
+          },
+          "type_kind": "Tptr"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 30,
+      "pd_exn_node": 0,
+      "pd_id": 16,
+      "pd_nodes": [
+        29,
+        30,
+        31,
+        32
+      ],
+      "pd_start_node": 29
+    },
+    "demoAB.B.__allocating_init() -> demoAB.B": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [
+          {
+            "name": "$metatype",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "IInt",
+              "type_kind": "Tint"
+            }
+          }
+        ],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 7,
+          "line": 6,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "@thick B.Type",
+          "is_static": false,
+          "method_name": "demoAB.B.__allocating_init() -> demoAB.B",
+          "parameters": [
+            "$metatype"
+          ],
+          "return_type": "file.B"
+        },
+        "ret_type": {
+          "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+          "is_inst_return_type": false,
+          "kind": "Pk_pointer",
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "file.B",
+            "type_kind": "Tstruct"
+          },
+          "type_kind": "Tptr"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 56,
+      "pd_exn_node": 0,
+      "pd_id": 14,
+      "pd_nodes": [
+        55,
+        56,
+        57,
+        58
+      ],
+      "pd_start_node": 55
+    },
+    "demoAB.B.__deallocating_deinit": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [
+          {
+            "name": "self",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "Pk_pointer",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "file.B",
+                "type_kind": "Tstruct"
+              },
+              "type_kind": "Tptr"
+            }
+          }
+        ],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 7,
+          "line": 6,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "file.B",
+          "is_static": false,
+          "method_name": "demoAB.B.__deallocating_deinit",
+          "parameters": [
+            "self"
+          ],
+          "return_type": "Swift.Void"
+        },
+        "ret_type": {
+          "$type": "",
+          "is_inst_return_type": false,
+          "type_kind": "Tvoid"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 52,
+      "pd_exn_node": 0,
+      "pd_id": 10,
+      "pd_nodes": [
+        51,
+        52,
+        53,
+        54
+      ],
+      "pd_start_node": 51
+    },
+    "demoAB.B.a.getter : Swift.Optional<demoAB.A>": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [
+          {
+            "name": "self",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "Pk_pointer",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "file.B",
+                "type_kind": "Tstruct"
+              },
+              "type_kind": "Tptr"
+            }
+          }
+        ],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 9,
+          "line": 7,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "file.B",
+          "is_static": false,
+          "method_name": "demoAB.B.a.getter : Swift.Optional<demoAB.A>",
+          "parameters": [
+            "self"
+          ],
+          "return_type": "Swift.Optional<A>"
+        },
+        "ret_type": {
+          "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+          "is_inst_return_type": false,
+          "struct_name": "Swift.Optional<A>",
+          "type_kind": "Tstruct"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 38,
+      "pd_exn_node": 0,
+      "pd_id": 11,
+      "pd_nodes": [
+        37,
+        38,
+        39,
+        40
+      ],
+      "pd_start_node": 37
+    },
+    "demoAB.B.a.modify : Swift.Optional<demoAB.A>": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [
+          {
+            "name": "self",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "Pk_pointer",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "file.B",
+                "type_kind": "Tstruct"
+              },
+              "type_kind": "Tptr"
+            }
+          }
+        ],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 9,
+          "line": 7,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "file.B",
+          "is_static": false,
+          "method_name": "demoAB.B.a.modify : Swift.Optional<demoAB.A>",
+          "parameters": [
+            "self"
+          ],
+          "return_type": "Swift.Void"
+        },
+        "ret_type": {
+          "$type": "",
+          "is_inst_return_type": false,
+          "type_kind": "Tvoid"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 46,
+      "pd_exn_node": 0,
+      "pd_id": 13,
+      "pd_nodes": [
+        45,
+        46,
+        47
+      ],
+      "pd_start_node": 45
+    },
+    "demoAB.B.a.setter : Swift.Optional<demoAB.A>": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [
+          {
+            "name": "value",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+              "is_inst_return_type": false,
+              "struct_name": "Swift.Optional<A>",
+              "type_kind": "Tstruct"
+            }
+          },
+          {
+            "name": "self",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "Pk_pointer",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "file.B",
+                "type_kind": "Tstruct"
+              },
+              "type_kind": "Tptr"
+            }
+          }
+        ],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 9,
+          "line": 7,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "file.B",
+          "is_static": false,
+          "method_name": "demoAB.B.a.setter : Swift.Optional<demoAB.A>",
+          "parameters": [
+            "value",
+            "self"
+          ],
+          "return_type": "Swift.Void"
+        },
+        "ret_type": {
+          "$type": "",
+          "is_inst_return_type": false,
+          "type_kind": "Tvoid"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 42,
+      "pd_exn_node": 0,
+      "pd_id": 12,
+      "pd_nodes": [
+        41,
+        42,
+        43,
+        44
+      ],
+      "pd_start_node": 41
+    },
+    "demoAB.B.deinit": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [
+          {
+            "name": "self",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "Pk_pointer",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "file.B",
+                "type_kind": "Tstruct"
+              },
+              "type_kind": "Tptr"
+            }
+          }
+        ],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 7,
+          "line": 6,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "file.B",
+          "is_static": false,
+          "method_name": "demoAB.B.deinit",
+          "parameters": [
+            "self"
+          ],
+          "return_type": "Swift.Builtin.NativeObject"
+        },
+        "ret_type": {
+          "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+          "is_inst_return_type": false,
+          "kind": "IInt",
+          "type_kind": "Tint"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 49,
+      "pd_exn_node": 0,
+      "pd_id": 9,
+      "pd_nodes": [
+        48,
+        49,
+        50
+      ],
+      "pd_start_node": 48
+    },
+    "demoAB.B.init() -> demoAB.B": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [
+          {
+            "name": "self",
+            "type": {
+              "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+              "is_inst_return_type": false,
+              "kind": "Pk_pointer",
+              "type": {
+                "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                "is_inst_return_type": false,
+                "struct_name": "file.B",
+                "type_kind": "Tstruct"
+              },
+              "type_kind": "Tptr"
+            }
+          }
+        ],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 7,
+          "line": 6,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "file.B",
+          "is_static": false,
+          "method_name": "demoAB.B.init() -> demoAB.B",
+          "parameters": [
+            "self"
+          ],
+          "return_type": "file.B"
+        },
+        "ret_type": {
+          "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+          "is_inst_return_type": false,
+          "kind": "Pk_pointer",
+          "type": {
+            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+            "is_inst_return_type": false,
+            "struct_name": "file.B",
+            "type_kind": "Tstruct"
+          },
+          "type_kind": "Tptr"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 60,
+      "pd_exn_node": 0,
+      "pd_id": 17,
+      "pd_nodes": [
+        59,
+        60,
+        61,
+        62
+      ],
+      "pd_start_node": 59
+    },
+    "demoAB.triggerAB() -> ()": {
+      "pd_attributes": {
+        "access": "Default",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 6,
+          "line": 14,
+          "source_file": {
+            "path": "./tmp/demoAB.swift",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "",
+          "is_static": false,
+          "method_name": "demoAB.triggerAB() -> ()",
+          "parameters": [],
+          "return_type": "Swift.Void"
+        },
+        "ret_type": {
+          "$type": "",
+          "is_inst_return_type": false,
+          "type_kind": "Tvoid"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 64,
+      "pd_exn_node": 0,
+      "pd_id": 15,
+      "pd_nodes": [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "pd_start_node": 63
+    },
+    "main": {
+      "pd_attributes": {
+        "access": "Public",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 0,
+          "line": 0,
+          "source_file": {
+            "path": "",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "",
+          "is_static": false,
+          "method_name": "main",
+          "parameters": [],
+          "return_type": "Swift.Int32"
+        },
+        "ret_type": {
+          "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+          "is_inst_return_type": false,
+          "struct_name": "Swift.Int32",
+          "type_kind": "Tstruct"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 1,
+      "pd_exn_node": 0,
+      "pd_id": 0,
+      "pd_nodes": [
+        0,
+        1,
+        2
+      ],
+      "pd_start_node": 0
+    },
+    "variable initialization expression of demoAB.A.b : Swift.Optional<demoAB.B>": {
+      "pd_attributes": {
+        "access": "Public",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 0,
+          "line": 0,
+          "source_file": {
+            "path": "",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "",
+          "is_static": false,
+          "method_name": "variable initialization expression of demoAB.A.b : Swift.Optional<demoAB.B>",
+          "parameters": [],
+          "return_type": "Swift.Optional<B>"
+        },
+        "ret_type": {
+          "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+          "is_inst_return_type": false,
+          "struct_name": "Swift.Optional<B>",
+          "type_kind": "Tstruct"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 4,
+      "pd_exn_node": 0,
+      "pd_id": 1,
+      "pd_nodes": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "pd_start_node": 3
+    },
+    "variable initialization expression of demoAB.B.a : Swift.Optional<demoAB.A>": {
+      "pd_attributes": {
+        "access": "Public",
+        "captured": [],
+        "const_formals": [],
+        "exceptions": [],
+        "formals": [],
+        "is_abstract": false,
+        "is_bridge_method": false,
+        "is_cpp_no_except_method": false,
+        "is_defined": true,
+        "is_generated": false,
+        "is_java_synchronized_method": false,
+        "is_model": false,
+        "is_obj_c_instance_method": false,
+        "is_specialized": false,
+        "is_synthetic_method": false,
+        "is_variadic": false,
+        "loc": {
+          "col": 0,
+          "line": 0,
+          "source_file": {
+            "path": "",
+            "path_type": "Relative"
+          }
+        },
+        "locals": [],
+        "method_annotations": {
+          "params": [],
+          "return_value": {
+            "annotations": []
+          }
+        },
+        "proc_name": {
+          "class_name": "",
+          "is_static": false,
+          "method_name": "variable initialization expression of demoAB.B.a : Swift.Optional<demoAB.A>",
+          "parameters": [],
+          "return_type": "Swift.Optional<A>"
+        },
+        "ret_type": {
+          "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+          "is_inst_return_type": false,
+          "struct_name": "Swift.Optional<A>",
+          "type_kind": "Tstruct"
+        },
+        "translation_unit": {
+          "path": "",
+          "path_type": "Absolute"
+        }
+      },
+      "pd_exit_node": 34,
+      "pd_exn_node": 0,
+      "pd_id": 8,
+      "pd_nodes": [
+        33,
+        34,
+        35,
+        36
+      ],
+      "pd_start_node": 33
+    }
+  }
+}

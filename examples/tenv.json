@@ -1,0 +1,242 @@
+[
+    {
+        "type_name": {
+            "swu_kind": "Struct",
+            "name": "Swift.Void",
+            "type_name_kind": "SwuTypeName"
+        },
+        "type_struct": {
+            "annotations": [],
+            "instance_fields": [],
+            "methods": [],
+            "static_fields": [],
+            "supers": []
+        }
+    },
+    {
+        "type_name": {
+            "swu_kind": "Struct",
+            "name": "Swift.Int32",
+            "type_name_kind": "SwuTypeName"
+        },
+        "type_struct": {
+            "annotations": [],
+            "instance_fields": [],
+            "methods": [],
+            "static_fields": [],
+            "supers": []
+        }
+    },
+    {
+        "type_name": {
+            "swu_kind": "Struct",
+            "name": "Swift.Builtin.NativeObject",
+            "type_name_kind": "SwuTypeName"
+        },
+        "type_struct": {
+            "annotations": [],
+            "instance_fields": [],
+            "methods": [],
+            "static_fields": [],
+            "supers": []
+        }
+    },
+    {
+        "type_name": {
+            "swu_kind": "Struct",
+            "name": "Swift.Optional<A>",
+            "type_name_kind": "SwuTypeName"
+        },
+        "type_struct": {
+            "annotations": [],
+            "instance_fields": [
+                {
+                    "annotation": {
+                        "annotations": []
+                    },
+                    "field_name": "noneFlag",
+                    "type": {
+                        "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+                        "is_inst_return_type": false,
+                        "kind": "IBool",
+                        "type_kind": "Tint"
+                    }
+                },
+                {
+                    "annotation": {
+                        "annotations": []
+                    },
+                    "field_name": "someFlag",
+                    "type": {
+                        "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+                        "is_inst_return_type": false,
+                        "kind": "IBool",
+                        "type_kind": "Tint"
+                    }
+                },
+                {
+                    "annotation": {
+                        "annotations": []
+                    },
+                    "field_name": "someStorage",
+                    "type": {
+                        "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+                        "is_inst_return_type": false,
+                        "kind": "Pk_pointer",
+                        "type": {
+                            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                            "is_inst_return_type": false,
+                            "struct_name": "file.A",
+                            "type_kind": "Tstruct"
+                        },
+                        "type_kind": "Tptr"
+                    }
+                }
+            ],
+            "methods": [],
+            "static_fields": [],
+            "supers": []
+        }
+    },
+    {
+        "type_name": {
+            "swu_kind": "Struct",
+            "name": "Swift.Optional<B>",
+            "type_name_kind": "SwuTypeName"
+        },
+        "type_struct": {
+            "annotations": [],
+            "instance_fields": [
+                {
+                    "annotation": {
+                        "annotations": []
+                    },
+                    "field_name": "noneFlag",
+                    "type": {
+                        "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+                        "is_inst_return_type": false,
+                        "kind": "IBool",
+                        "type_kind": "Tint"
+                    }
+                },
+                {
+                    "annotation": {
+                        "annotations": []
+                    },
+                    "field_name": "someFlag",
+                    "type": {
+                        "$type": "Cilsil.Sil.Types.Tint, Cilsil",
+                        "is_inst_return_type": false,
+                        "kind": "IBool",
+                        "type_kind": "Tint"
+                    }
+                },
+                {
+                    "annotation": {
+                        "annotations": []
+                    },
+                    "field_name": "someStorage",
+                    "type": {
+                        "$type": "Cilsil.Sil.Types.Tptr, Cilsil",
+                        "is_inst_return_type": false,
+                        "kind": "Pk_pointer",
+                        "type": {
+                            "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                            "is_inst_return_type": false,
+                            "struct_name": "file.B",
+                            "type_kind": "Tstruct"
+                        },
+                        "type_kind": "Tptr"
+                    }
+                }
+            ],
+            "methods": [],
+            "static_fields": [],
+            "supers": []
+        }
+    },
+    {
+        "type_name": {
+            "swu_kind": "Class",
+            "name": "file.A",
+            "type_name_kind": "SwuTypeName"
+        },
+        "type_struct": {
+            "annotations": [],
+            "instance_fields": [
+                {
+                    "annotation": {
+                        "annotations": []
+                    },
+                    "field_name": "b",
+                    "type": {
+                        "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                        "is_inst_return_type": false,
+                        "struct_name": "Swift.Optional<B>",
+                        "type_kind": "Tstruct"
+                    }
+                }
+            ],
+            "methods": [
+                {
+                    "class_name": "file.A",
+                    "is_static": false,
+                    "method_name": "deinit",
+                    "parameters": [],
+                    "return_type": "Swift.Void"
+                },
+                {
+                    "class_name": "file.A",
+                    "is_static": false,
+                    "method_name": "init",
+                    "parameters": [],
+                    "return_type": "Swift.Void"
+                }
+            ],
+            "static_fields": [],
+            "supers": []
+        }
+    },
+    {
+        "type_name": {
+            "swu_kind": "Class",
+            "name": "file.B",
+            "type_name_kind": "SwuTypeName"
+        },
+        "type_struct": {
+            "annotations": [],
+            "instance_fields": [
+                {
+                    "annotation": {
+                        "annotations": []
+                    },
+                    "field_name": "a",
+                    "type": {
+                        "$type": "Cilsil.Sil.Types.Tstruct, Cilsil",
+                        "is_inst_return_type": false,
+                        "struct_name": "Swift.Optional<A>",
+                        "type_kind": "Tstruct"
+                    }
+                }
+            ],
+            "methods": [
+                {
+                    "class_name": "file.B",
+                    "is_static": false,
+                    "method_name": "deinit",
+                    "parameters": [],
+                    "return_type": "Swift.Void"
+                },
+                {
+                    "class_name": "file.B",
+                    "is_static": false,
+                    "method_name": "init",
+                    "parameters": [],
+                    "return_type": "Swift.Void"
+                }
+            ],
+            "static_fields": [],
+            "supers": []
+        }
+    }
+]
