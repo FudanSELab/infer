@@ -76,23 +76,39 @@ let edge_is_strong tenv obj_edge =
             || String.equal Config.weak att || String.equal Config.assign att ) )
       params
   in
+  let rec filter ((fn, typ, _) : Struct.field) = 
+    if Fieldname.equal obj_edge.rc_field.rc_field_name fn then
+      true
+    else
+      match typ.desc with
+      | Tstruct name -> (
+          match Tenv.lookup tenv name with
+          | Some {fields} -> 
+            (match (List.find fields filter) with Some _ -> true | None -> false)
+          | None -> false
+            )
+      | _ -> false
+  in
   let rc_field =
     match obj_edge.rc_from.rc_node_typ.desc with
     | Tstruct name -> (
+      (* 比较 from_node & to_node 的 field_name *)
       match Tenv.lookup tenv name with
       | Some {fields} ->
-          List.find ~f:(fun (fn, _, _) -> Fieldname.equal obj_edge.rc_field.rc_field_name fn) fields
+          (* List.find ~f:(fun (fn, typ, _) ->
+            ignore typ.desc;
+            Fieldname.equal obj_edge.rc_field.rc_field_name fn) fields *)
+          List.find fields ~f:filter
       | None ->
           None )
     | _ ->
         None
   in
-  not
-    ( (* Weak edge - by type of from-node *)
-      has_weak_type obj_edge.rc_from.rc_node_typ
-    (* Weak edge - by annotation of from-node/field *)
-    || ( match rc_field with
+  (* false and true and false *)
+  has_weak_type obj_edge.rc_from.rc_node_typ |> string_of_bool |> print_endline;
+  ( match rc_field with
        | Some (_, _, ia) ->
+        (* print_endline "run into Some (_, _, ia) case"; *)
            List.exists
              ~f:(fun (ann : Annot.t) ->
                ( String.equal ann.class_name Config.property_attributes
@@ -100,12 +116,44 @@ let edge_is_strong tenv obj_edge =
                && has_weak_or_unretained_or_assign ann.parameters )
              ia
        | _ ->
+           (* print_endline "run into _ case"; *)
+           (* Assume the edge is weak if the type or field cannot be found in the tenv, to avoid FPs *)
+           true )
+           |> string_of_bool |> print_endline;
+  (match rc_field with Some (_, typ, _) -> has_weak_type typ | None -> false) |> string_of_bool |> print_endline;
+  (* if edge_is_strong = true, rc_field must be Some _ *)
+  not
+    ( (* Weak edge - by type of from-node *)
+      has_weak_type obj_edge.rc_from.rc_node_typ
+    (* Weak edge - by annotation of from-node/field *)
+    || ( match rc_field with
+       | Some (_, _, ia) ->
+        print_endline "run into Some (_, _, ia) case";
+           List.exists
+             ~f:(fun (ann : Annot.t) ->
+               ( String.equal ann.class_name Config.property_attributes
+               || String.equal ann.class_name Config.ivar_attributes )
+               && has_weak_or_unretained_or_assign ann.parameters )
+             ia
+       | _ ->
+           print_endline "run into _ case";
            (* Assume the edge is weak if the type or field cannot be found in the tenv, to avoid FPs *)
            true )
     ||
     (* Weak edge - by type of from-node/field *)
     match rc_field with Some (_, typ, _) -> has_weak_type typ | None -> false )
 
+(* let rec filter (fn, typ, _) = 
+  if Fieldname.equal obj_edge.rc_field.rc_field_name fn then
+    true
+  else
+    match typ.desc with
+    | Tstruct name -> (
+        match Tenv.lookup tenv name with
+        | Some {fields} -> 
+          (match (List.find fields filter) with Some _ -> true | None -> false)
+        )
+    | _ -> false *)
 
 exception Max_retain_cycles of RetainCyclesType.Set.t
 
@@ -214,6 +262,23 @@ let get_cycles found_cycles root tenv prop =
         in
         dfs ~found_cycles:found_cycles' ~root_node ~from_node ~rev_path ~fields:el'
           ~visited:visited'
+    | (_field, Predicates.Estruct (sub_fields, _inst)) :: el' ->
+      print_endline "running in Estruct : ";
+      Fieldname.pp F.std_formatter _field;
+      print_endline "";
+      let rec destruct fields el' =
+        match fields with
+        | [] -> el'
+        | (field_name, Predicates.Eexp (f_exp, f_inst)) :: t ->
+          destruct t ((field_name, Predicates.Eexp (f_exp, f_inst)) :: el')
+        | (_field_name, Predicates.Estruct (sub_fields, _inst)) :: t ->
+          destruct sub_fields [] @ destruct t el'
+        (* | Predicates.Earray TODO: *)
+        | _ -> el'
+      in
+      let el'' = destruct sub_fields el' in
+      dfs ~found_cycles:found_cycles ~root_node ~from_node ~rev_path ~fields:el''
+        ~visited:visited
     | _ ->
         found_cycles
   in
